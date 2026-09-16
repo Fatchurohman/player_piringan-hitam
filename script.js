@@ -47,6 +47,11 @@ async function fetchSunoSongsFromSupabase() {
         console.error("Gagal koneksi Supabase:", error.message);
         if (typeof displayStatus !== 'undefined') {
             displayStatus.textContent = "Gagal memuat database.";
-        }
+            }
     }
 }
+            // Tambahkan baris ini di baris paling bawah script.js agar otomatis jalan saat web dibuka
+document.addEventListener('DOMContentLoaded', () => {
+    fetchSunoSongsFromSupabase();
+});
+        
