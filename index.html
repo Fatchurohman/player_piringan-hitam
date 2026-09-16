@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CDN Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cinzel:wght@600;700&display=swap');
         
@@ -16,7 +18,6 @@
             background: radial-gradient(circle at center, #1a1512 0%, #0d0a08 100%);
         }
 
-        /* Vinyl Spin Animation */
         @keyframes spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
@@ -26,7 +27,6 @@
             animation: spin 1.8s linear infinite;
         }
 
-        /* Luxury Wooden Mahogany Chassis */
         .wooden-base {
             background: linear-gradient(135deg, #2c160b 0%, #1a0d06 50%, #110804 100%),
                         url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=1000');
@@ -37,13 +37,11 @@
             border: 4px solid #42200c;
         }
 
-        /* Gold Brushed Metallic Panel */
         .gold-panel {
             background: linear-gradient(135deg, #fef08a 0%, #ca8a04 30%, #eab308 50%, #854d0e 100%);
             box-shadow: inset 0 1px 3px rgba(255,255,255,0.7), 0 10px 20px rgba(0,0,0,0.5);
         }
 
-        /* Synchronized Aesthetic Box (Matching Developer Badge) */
         .sync-panel {
             font-family: 'Cinzel', serif;
             background: linear-gradient(135deg, #451a03 0%, #78350f 50%, #1f1005 100%);
@@ -54,26 +52,22 @@
             border: 1.5px solid #d97706;
         }
 
-        /* Tone Arm Rest vs Playing Positions (Disempurnakan supados pas di luar saat stop) */
         .tone-arm-container {
             transform-origin: 215px 45px;
             transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .tone-arm-rest {
-            transform: rotate(38deg); /* Posisi di luar piringan hitam namun tetap terlihat jelas di layar */
+            transform: rotate(38deg);
         }
 
         .tone-arm-playing {
-            transform: rotate(22deg); /* Pas di area alur piringan hitam warna hitam saat play */
+            transform: rotate(22deg);
         }
 
-        /* Custom Range Slider */
         input[type=range] {
             accent-color: #ca8a04;
         }
-            <!-- CDN Supabase Client (Wajib agar script.js bisa baca perintah Supabase) -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     </style>
 </head>
 <body class="min-h-screen text-gray-100 flex flex-col items-center justify-between p-4 md:p-8">
@@ -87,7 +81,6 @@
 
     <main class="w-full max-w-4xl flex flex-col items-center justify-center space-y-4">
         
-        <!-- Playlist & Audio Manager Section (Dipindah ke atas supados estetis) -->
         <div class="w-full max-w-[660px] bg-[#14100d] border border-amber-900/40 rounded-2xl p-4 shadow-2xl z-30">
             <div class="flex items-center justify-between mb-3">
                 <h3 class="text-sm font-bold text-amber-200 uppercase tracking-wider flex items-center gap-2 font-serif">
@@ -99,24 +92,17 @@
                 </label>
             </div>
 
-            <!-- Track List -->
-            <div id="playlistContainer" class="space-y-2 max-h-32 overflow-y-auto pr-1">
-                <!-- Populated via JavaScript -->
-            </div>
+            <div id="playlistContainer" class="space-y-2 max-h-32 overflow-y-auto pr-1"></div>
         </div>
 
-        <!-- Turntable Wooden Chassis -->
         <div class="wooden-base relative w-full max-w-[660px] min-h-[540px] rounded-3xl p-5 md:p-8 flex flex-col justify-between overflow-hidden">
             
-            <!-- Golden Corner Accents -->
             <div class="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-amber-500/60 rounded-tl-xl pointer-events-none"></div>
             <div class="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-amber-500/60 rounded-tr-xl pointer-events-none"></div>
             <div class="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-amber-500/60 rounded-bl-xl pointer-events-none"></div>
             <div class="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-amber-500/60 rounded-br-xl pointer-events-none"></div>
 
-            <!-- Top Controls Wrapper -->
             <div class="flex items-center justify-between w-full z-30">
-                <!-- Top Left Control Panel (Disamakan dengan Box Identitas Developer) -->
                 <div class="sync-panel px-3.5 py-2 rounded-2xl flex items-center space-x-4">
                     <div class="flex flex-col items-center">
                         <span class="text-[8px] font-bold text-amber-300/80 uppercase tracking-widest mb-0.5">Power</span>
@@ -132,66 +118,52 @@
                     </div>
                 </div>
 
-                <!-- 3D Aesthetic Developer Badge -->
                 <div class="sync-panel px-4 py-2 rounded-xl text-center flex flex-col items-center justify-center">
                     <span class="text-[8px] uppercase tracking-[0.2em] text-amber-300/80 font-bold">Created By</span>
                     <span class="text-xs md:text-sm font-extrabold text-amber-200 tracking-wider">developer : "fatur62"</span>
                 </div>
             </div>
 
-            <!-- Main Turntable Platter and Vinyl Record -->
             <div class="relative w-[250px] h-[250px] md:w-[310px] md:h-[310px] mx-auto my-3 flex items-center justify-center z-10">
-                <!-- Luxury Gold Platter Rim -->
                 <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-amber-600 via-yellow-200 to-amber-700 shadow-2xl border-4 border-amber-800 flex items-center justify-center">
-                    <!-- Black Vinyl Record with Glossy Reflection -->
                     <div id="vinylRecord" class="relative w-[93%] h-[93%] rounded-full bg-gradient-to-tr from-neutral-950 via-neutral-900 to-neutral-950 shadow-2xl flex items-center justify-center border border-neutral-800">
-                        <!-- Vinyl Grooves Rings -->
                         <div class="absolute inset-3 rounded-full border border-amber-500/10 pointer-events-none"></div>
                         <div class="absolute inset-6 rounded-full border border-neutral-800/80 pointer-events-none"></div>
                         <div class="absolute inset-10 rounded-full border border-amber-500/10 pointer-events-none"></div>
                         <div class="absolute inset-14 rounded-full border border-neutral-800/80 pointer-events-none"></div>
                         <div class="absolute inset-18 rounded-full border border-amber-500/10 pointer-events-none"></div>
                         <div class="absolute inset-22 rounded-full border border-neutral-800/80 pointer-events-none"></div>
-                        <div class="absolute inset-26 rounded-full border border-neutral-800/10 pointer-events-none"></div>
+                        <div class="absolute inset-26 rounded-full border border-amber-500/10 pointer-events-none"></div>
 
-                        <!-- Record Center Label (Gold Luxury) -->
                         <div id="recordLabel" class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-tr from-amber-600 via-yellow-500 to-amber-700 border-4 border-amber-900 shadow-inner flex flex-col items-center justify-center text-center p-2 relative overflow-hidden pointer-events-none">
                             <div class="absolute inset-0 bg-black/15"></div>
                             <span id="labelArtist" class="text-[8px] md:text-[9px] font-bold text-amber-100 uppercase tracking-widest z-10 truncate w-full">Luxury Audio</span>
                             <span id="labelTitle" class="text-[10px] md:text-[11px] font-extrabold text-white tracking-wide z-10 truncate w-full mt-0.5">Gold Masterpiece</span>
-                            <!-- Center Spindle Hole -->
                             <div class="w-3.5 h-3.5 rounded-full bg-neutral-300 border-2 border-neutral-600 z-10 mt-1 shadow-inner"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Tone Arm Assembly -->
                 <div id="toneArm" class="tone-arm-container tone-arm-rest absolute -top-4 -right-4 w-40 h-56 pointer-events-none z-20">
                     <svg viewBox="0 0 250 250" class="w-full h-full drop-shadow-2xl">
-                        <!-- Tone Arm Base Mount (Gold Trim) -->
                         <circle cx="215" cy="45" r="24" fill="url(#goldGrad)" stroke="#78350f" stroke-width="2.5"/>
                         <circle cx="215" cy="45" r="16" fill="#1c1917"/>
                         <circle cx="215" cy="45" r="6" fill="url(#goldGrad)"/>
                         
-                        <!-- Anti-skate & Cueing Levers -->
                         <rect x="195" y="30" width="8" height="15" rx="3" fill="#111" stroke="#d97706" stroke-width="0.5"/>
                         <line x1="205" y1="55" x2="198" y2="65" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
 
-                        <!-- Counterweight at the back -->
                         <rect x="210" y="10" width="12" height="22" rx="4" fill="#0c0a09" stroke="#d97706" stroke-width="1.5"/>
                         <circle cx="216" cy="15" r="5" fill="#d97706"/>
 
-                        <!-- Metallic Golden Tubular Arm -->
                         <path d="M 215 45 L 215 85 Q 215 130 140 160 L 95 175" fill="none" stroke="url(#goldGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M 215 45 L 215 85 Q 215 130 140 160 L 95 175" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-1, -1)"/>
 
-                        <!-- Cartridge / HeadShell -->
                         <g transform="translate(90, 168) rotate(15)">
                             <rect x="0" y="0" width="16" height="24" rx="3" fill="#1c1917" stroke="#fde047" stroke-width="1.2"/>
                             <rect x="3" y="18" width="10" height="8" fill="#ca8a04" />
                         </g>
 
-                        <!-- SVG Gradients -->
                         <defs>
                             <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" stop-color="#fef08a" />
@@ -203,18 +175,15 @@
                 </div>
             </div>
 
-            <!-- Bottom Gold Control Panel / Transport area -->
             <div class="gold-panel w-full py-3 px-5 rounded-2xl flex flex-wrap items-center justify-between gap-3 z-30 border border-yellow-200/60 shadow-xl">
-                <!-- Track Status & Info -->
                 <div class="flex items-center space-x-3">
                     <div id="statusIndicator" class="w-3.5 h-3.5 rounded-full bg-red-600 shadow-md animate-pulse border border-red-900"></div>
                     <div>
-                        <h4 id="displayTitle" class="text-xs font-black text-neutral-900 tracking-wide">Gold Masterpiece (Sample)</h4>
+                        <h4 id="displayTitle" class="text-xs font-black text-neutral-900 tracking-wide">Menghubungkan Database...</h4>
                         <p id="displayStatus" class="text-[10px] text-neutral-800 font-bold">System Standby</p>
                     </div>
                 </div>
 
-                <!-- Transport Controls -->
                 <div class="flex items-center space-x-2.5">
                     <button id="prevBtn" title="Previous Track" class="w-9 h-9 rounded-full bg-neutral-900 hover:bg-neutral-800 text-amber-300 border border-amber-500/60 shadow-md flex items-center justify-center transition active:scale-95">
                         <i class="fa-solid fa-backward-step text-xs"></i>
@@ -227,7 +196,6 @@
                     </button>
                 </div>
 
-                <!-- Volume Adjuster -->
                 <div class="flex items-center space-x-2">
                     <i class="fa-solid fa-volume-high text-xs text-neutral-900"></i>
                     <input id="volumeSlider" type="range" min="0" max="1" step="0.05" value="0.7" class="w-16 md:w-20 h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer">
@@ -242,33 +210,13 @@
 
     <!-- JavaScript Application Logic -->
     <script>
+        // Array global tracks penampung data utama
         let tracks = [
             {
-                title: "Gold Masterpiece",
-                artist: "Luxury Sound",
+                title: "Memuat Database...",
+                artist: "Supabase Connection",
                 type: "synth",
-                melody: [
-                    { note: 'C4', dur: '4n' }, { note: 'Eb4', dur: '4n' }, { note: 'G4', dur: '4n' }, { note: 'Bb4', dur: '2n' },
-                    { note: 'F4', dur: '4n' }, { note: 'Ab4', dur: '4n' }, { note: 'C5', dur: '2n' }
-                ]
-            },
-            {
-                title: "Vintage Velvet",
-                artist: "Retro Audio",
-                type: "synth",
-                melody: [
-                    { note: 'A3', dur: '4n' }, { note: 'C4', dur: '4n' }, { note: 'E4', dur: '4n' }, { note: 'G4', dur: '2n' },
-                    { note: 'D4', dur: '4n' }, { note: 'F4', dur: '4n' }, { note: 'A4', dur: '2n' }
-                ]
-            },
-            {
-                title: "Analog Symphony",
-                artist: "Classic Melodies",
-                type: "synth",
-                melody: [
-                    { note: 'G3', dur: '4n' }, { note: 'B3', dur: '4n' }, { note: 'D4', dur: '4n' }, { note: 'F#4', dur: '2n' },
-                    { note: 'E4', dur: '4n' }, { note: 'G4', dur: '4n' }, { note: 'B4', dur: '2n' }
-                ]
+                melody: [{ note: 'C4', dur: '4n' }]
             }
         ];
 
@@ -566,10 +514,9 @@
                 console.error("Error uploading audio files:", error);
             }
         });
-
-        renderPlaylist();
-        loadTrack(0);
     </script>
+    
+    <!-- Script Eksternal Supabase (script.js) -->
     <script src="script.js"></script>
 </body>
 </html>
