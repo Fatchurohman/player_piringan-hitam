@@ -21,20 +21,25 @@ async function fetchSunoSongsFromSupabase() {
 
         if (Array.isArray(data) && data.length > 0) {
             data.forEach(song => {
-                // Pastikan variabel 'tracks' array sudah ada di aplikasi panjenengan
+                // Pastikan variabel 'tracks' array sudah ada dari HTML utama
                 if (typeof tracks !== 'undefined') {
                     tracks.push({
                         title: song.title || 'Lagu Suno',
                         artist: song.artist || 'Fatchurohman',
-                        type: 'supabase',
+                        type: 'file', // Menggunakan tipe file agar bisa diputar sebagai audio URL
                         url: song.audio_url // Sesuai dengan kolom di tabel songs
                     });
                 }
             });
 
+            // Perbarui tampilan playlist dan muat ulang track
             if (typeof renderPlaylist === 'function') {
                 renderPlaylist();
             }
+            if (typeof loadTrack === 'function' && tracks.length > 0) {
+                loadTrack(currentTrackIndex);
+            }
+            
             if (typeof displayStatus !== 'undefined') {
                 displayStatus.textContent = "Koleksi Supabase siap diputar!";
             }
@@ -47,11 +52,14 @@ async function fetchSunoSongsFromSupabase() {
         console.error("Gagal koneksi Supabase:", error.message);
         if (typeof displayStatus !== 'undefined') {
             displayStatus.textContent = "Gagal memuat database.";
-            }
+        }
     }
 }
-            // Tambahkan baris ini di baris paling bawah script.js agar otomatis jalan saat web dibuka
+
+// Jalankan otomatis saat halaman selesai dimuat
 document.addEventListener('DOMContentLoaded', () => {
-    fetchSunoSongsFromSupabase();
+    // Beri jeda 0.5 detik agar inisialisasi utama di HTML selesai dulu
+    setTimeout(() => {
+        fetchSunoSongsFromSupabase();
+    }, 500);
 });
-        
