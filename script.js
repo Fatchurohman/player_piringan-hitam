@@ -6,11 +6,11 @@ const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, 
     auth: { persistSession: false }
 });
 
-// Fungsi untuk mengambil data lagu dari tabel 'songs' Supabase
 async function fetchSunoSongsFromSupabase() {
     try {
-        if (typeof displayStatus !== 'undefined') {
-            displayStatus.textContent = "Mengambil koleksi Suno dari Supabase...";
+        const displayStatusElem = document.getElementById('displayStatus');
+        if (displayStatusElem) {
+            displayStatusElem.textContent = "Mengambil koleksi Suno dari Supabase...";
         }
         
         const { data, error } = await _supabase
@@ -20,46 +20,43 @@ async function fetchSunoSongsFromSupabase() {
         if (error) throw error;
 
         if (Array.isArray(data) && data.length > 0) {
-            data.forEach(song => {
-                // Pastikan variabel 'tracks' array sudah ada dari HTML utama
-                if (typeof tracks !== 'undefined') {
-                    tracks.push({
-                        title: song.title || 'Lagu Suno',
-                        artist: song.artist || 'Fatchurohman',
-                        type: 'file', // Menggunakan tipe file agar bisa diputar sebagai audio URL
-                        url: song.audio_url // Sesuai dengan kolom di tabel songs
-                    });
-                }
-            });
+            // Ubah format data Supabase agar masuk ke array tracks global
+            window.tracks = data.map(song => ({
+                title: song.title || 'Lagu Suno',
+                artist: song.artist || 'Fatchurohman',
+                type: 'file',
+                url: song.audio_url
+            }));
 
-            // Perbarui tampilan playlist dan muat ulang track
+            // Render ulang playlist dan muat lagu pertama
             if (typeof renderPlaylist === 'function') {
                 renderPlaylist();
             }
-            if (typeof loadTrack === 'function' && tracks.length > 0) {
-                loadTrack(currentTrackIndex);
+            if (typeof loadTrack === 'function') {
+                window.currentTrackIndex = 0;
+                loadTrack(0);
             }
             
-            if (typeof displayStatus !== 'undefined') {
-                displayStatus.textContent = "Koleksi Supabase siap diputar!";
+            if (displayStatusElem) {
+                displayStatusElem.textContent = "Koleksi Supabase siap diputar!";
             }
         } else {
-            if (typeof displayStatus !== 'undefined') {
-                displayStatus.textContent = "Tabel songs masih kosong.";
+            if (displayStatusElem) {
+                displayStatusElem.textContent = "Tabel songs masih kosong.";
             }
         }
     } catch (error) {
-        console.error("Gagal koneksi Supabase:", error.message);
-        if (typeof displayStatus !== 'undefined') {
-            displayStatus.textContent = "Gagal memuat database.";
+        console.error("Gagal koneksi Supabase:", error);
+        const displayStatusElem = document.getElementById('displayStatus');
+        if (displayStatusElem) {
+            displayStatusElem.textContent = "Gagal memuat database.";
         }
     }
 }
 
-// Jalankan otomatis saat halaman selesai dimuat
-document.addEventListener('DOMContentLoaded', () => {
-    // Beri jeda 0.5 detik agar inisialisasi utama di HTML selesai dulu
+// Jalankan otomatis setelah halaman selesai dimuat sepenuhnya
+window.addEventListener('load', () => {
     setTimeout(() => {
         fetchSunoSongsFromSupabase();
-    }, 500);
+    }, 800);
 });
