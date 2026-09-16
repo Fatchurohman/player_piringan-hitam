@@ -195,8 +195,8 @@
                     <i class="fa-solid fa-compact-disc text-amber-500"></i> Playlist & Audio Source
                 </h3>
                 <label class="cursor-pointer bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-upload"></i> Upload MP3/WAV
-                    <input type="file" id="audioUpload" accept="audio/*" class="hidden">
+                    <i class="fa-solid fa-folder-open"></i> Buka MP3
+                    <input type="file" id="audioUpload" accept="audio/*" multiple class="hidden">
                 </label>
             </div>
 
@@ -213,7 +213,7 @@
 
     <!-- JavaScript Application Logic -->
     <script>
-        const tracks = [
+        let tracks = [
             {
                 title: "Midnight Jazz",
                 artist: "Lo-Fi Dream",
@@ -249,9 +249,7 @@
         let currentSpeed = 33;
         let audioCtx = null;
         let synthLoop = null;
-        let uploadedAudio = null;
         let audioElement = null;
-        let isUploadedFile = false;
 
         const vinylRecord = document.getElementById('vinylRecord');
         const toneArm = document.getElementById('toneArm');
@@ -274,19 +272,18 @@
             playlistContainer.innerHTML = '';
             tracks.forEach((track, index) => {
                 const item = document.createElement('div');
-                item.className = `flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition border ${index === currentTrackIndex && !isUploadedFile ? 'bg-amber-950/40 border-amber-600/50 text-amber-200' : 'bg-neutral-900/60 border-neutral-800 text-gray-300 hover:bg-neutral-800'}`;
+                item.className = `flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition border ${index === currentTrackIndex ? 'bg-amber-950/40 border-amber-600/50 text-amber-200' : 'bg-neutral-900/60 border-neutral-800 text-gray-300 hover:bg-neutral-800'}`;
                 item.innerHTML = `
                     <div class="flex items-center space-x-3 overflow-hidden">
                         <span class="w-6 text-center text-xs text-amber-500 font-bold">${index + 1}</span>
                         <div class="truncate">
                             <p class="text-xs font-bold truncate">${track.title}</p>
-                            <p class="text-[10px] text-gray-400 truncate">${track.artist}</p>
+                            <p class="text-[10px] text-gray-400 truncate">${track.artist || 'Custom Audio'}</p>
                         </div>
                     </div>
-                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-neutral-800 text-gray-400">Synth</span>
+                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-neutral-800 text-gray-400">${track.type || 'MP3'}</span>
                 `;
                 item.addEventListener('click', () => {
-                    isUploadedFile = false;
                     currentTrackIndex = index;
                     loadTrack(currentTrackIndex);
                     if (isPlaying) {
@@ -299,10 +296,26 @@
         }
 
         function loadTrack(index) {
+            if (tracks.length === 0) return;
             const track = tracks[index];
             labelTitle.textContent = track.title;
-            labelArtist.textContent = track.artist;
-            displayTitle.textContent = `${track.title} — ${track.artist}`;
+            labelArtist.textContent = track.artist || 'Custom File';
+            displayTitle.textContent = `${track.title} — ${track.artist || 'Custom Audio'}`;
+            
+            if (audioElement) {
+                audioElement.pause();
+                audioElement = null;
+            }
+
+            if (track.type === 'file') {
+                audioElement = new Audio(track.url);
+                audioElement.loop = false;
+                audioElement.volume = parseFloat(volumeSlider.value);
+                audioElement.addEventListener('ended', () => {
+                    nextBtn.click();
+                });
+            }
+
             renderPlaylist();
         }
 
@@ -366,7 +379,7 @@
         }
 
         function playAudio() {
-            if (!isPoweredOn) return;
+            if (!isPoweredOn || tracks.length === 0) return;
             isPlaying = true;
 
             playIcon.className = "fa-solid fa-pause ml-0";
@@ -379,7 +392,8 @@
             toneArm.classList.remove('tone-arm-rest');
             toneArm.classList.add('tone-arm-playing');
 
-            if (isUploadedFile && audioElement) {
+            const track = tracks[currentTrackIndex];
+            if (track.type === 'file' && audioElement) {
                 audioElement.volume = parseFloat(volumeSlider.value);
                 audioElement.play().catch(err => console.log(err));
             } else {
@@ -448,7 +462,7 @@
         });
 
         nextBtn.addEventListener('click', () => {
-            if (isUploadedFile) return;
+            if (tracks.length === 0) return;
             currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
             loadTrack(currentTrackIndex);
             if (isPlaying) {
@@ -458,7 +472,7 @@
         });
 
         prevBtn.addEventListener('click', () => {
-            if (isUploadedFile) return;
+            if (tracks.length === 0) return;
             currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
             loadTrack(currentTrackIndex);
             if (isPlaying) {
@@ -475,31 +489,28 @@
         });
 
         audioUpload.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
+            const files = e.target.files;
+            if (!files || files.length === 0) return;
 
-            const fileURL = URL.createObjectURL(file);
-            if (audioElement) {
-                audioElement.pause();
-            }
-            audioElement = new Audio(fileURL);
-            audioElement.loop = true;
+            let firstNewIndex = tracks.length;
 
-            isUploadedFile = true;
-            const fileName = file.name.replace(/\.[^/.]+$/, "");
-            labelTitle.textContent = fileName;
-            labelArtist.textContent = "Custom File";
-            displayTitle.textContent = `${fileName} (Uploaded)`;
-            
-            const playlistItems = playlistContainer.children;
-            for (let item of playlistItems) {
-                item.className = "flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition border bg-neutral-900/60 border-neutral-800 text-gray-300 hover:bg-neutral-800";
-            }
+            Array.from(files).forEach((file, idx) => {
+                const fileURL = URL.createObjectURL(file);
+                const fileName = file.name.replace(/\.[^/.]+$/, "");
+                tracks.push({
+                    title: fileName,
+                    artist: "Local File",
+                    type: "file",
+                    url: fileURL
+                });
+            });
+
+            currentTrackIndex = firstNewIndex;
+            loadTrack(currentTrackIndex);
 
             if (isPlaying) {
-                if (synthLoop) { clearInterval(synthLoop); synthLoop = null; }
-                audioElement.volume = parseFloat(volumeSlider.value);
-                audioElement.play();
+                stopAudio();
+                playAudio();
             }
         });
 
