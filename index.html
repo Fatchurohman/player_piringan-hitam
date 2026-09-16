@@ -43,33 +43,25 @@
             box-shadow: inset 0 1px 3px rgba(255,255,255,0.7), 0 10px 20px rgba(0,0,0,0.5);
         }
 
-        /* Brushed Aluminum Panel */
-        .silver-panel {
-            background: linear-gradient(135deg, #e5e7eb 0%, #9ca3af 50%, #4b5563 100%);
-            box-shadow: inset 0 1px 3px rgba(255,255,255,0.8), 0 8px 16px rgba(0,0,0,0.4);
-        }
-
-        /* 3D Aesthetic Developer Badge Styling */
-        .badge-3d {
+        /* Synchronized Aesthetic Box (Matching Developer Badge) */
+        .sync-panel {
             font-family: 'Cinzel', serif;
             background: linear-gradient(135deg, #451a03 0%, #78350f 50%, #1f1005 100%);
             color: #fde047;
-            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.9), 0 -1px 1px rgba(255, 255, 255, 0.4);
             box-shadow: 0 6px 12px rgba(0,0,0,0.6), 
                         inset 0 2px 3px rgba(255, 215, 0, 0.3),
                         inset 0 -2px 4px rgba(0, 0, 0, 0.8);
             border: 1.5px solid #d97706;
-            letter-spacing: 0.15em;
         }
 
-        /* Tone Arm Rest vs Playing Positions (Sud diperbaiki agar pas di piringan hitam) */
+        /* Tone Arm Rest vs Playing Positions (Disempurnakan supados pas di luar saat stop) */
         .tone-arm-container {
             transform-origin: 215px 45px;
             transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .tone-arm-rest {
-            transform: rotate(30deg); /* Posisi di luar pinggir kanan piringan hitam saat stop */
+            transform: rotate(38deg); /* Posisi di luar piringan hitam namun tetap terlihat jelas di layar */
         }
 
         .tone-arm-playing {
@@ -91,7 +83,26 @@
         <p class="text-[10px] md:text-xs text-amber-500/80 mt-1 uppercase tracking-[0.3em] font-semibold">High-End Analog Masterpiece</p>
     </header>
 
-    <main class="w-full max-w-4xl flex flex-col items-center justify-center">
+    <main class="w-full max-w-4xl flex flex-col items-center justify-center space-y-4">
+        
+        <!-- Playlist & Audio Manager Section (Dipindah ke atas supados estetis) -->
+        <div class="w-full max-w-[660px] bg-[#14100d] border border-amber-900/40 rounded-2xl p-4 shadow-2xl z-30">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="text-sm font-bold text-amber-200 uppercase tracking-wider flex items-center gap-2 font-serif">
+                    <i class="fa-solid fa-compact-disc text-amber-500"></i> Playlist & Audio Manager
+                </h3>
+                <label class="cursor-pointer bg-gradient-to-r from-amber-700 to-yellow-600 hover:from-amber-600 hover:to-yellow-500 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-lg transition flex items-center gap-1.5 border border-amber-400/40">
+                    <i class="fa-solid fa-folder-open"></i> Buka MP3
+                    <input type="file" id="audioUpload" accept="audio/*" multiple class="hidden">
+                </label>
+            </div>
+
+            <!-- Track List -->
+            <div id="playlistContainer" class="space-y-2 max-h-32 overflow-y-auto pr-1">
+                <!-- Populated via JavaScript -->
+            </div>
+        </div>
+
         <!-- Turntable Wooden Chassis -->
         <div class="wooden-base relative w-full max-w-[660px] min-h-[540px] rounded-3xl p-5 md:p-8 flex flex-col justify-between overflow-hidden">
             
@@ -103,24 +114,24 @@
 
             <!-- Top Controls Wrapper -->
             <div class="flex items-center justify-between w-full z-30">
-                <!-- Top Left Silver Control Panel (Power & Speed) -->
-                <div class="silver-panel px-3.5 py-2.5 rounded-2xl flex items-center space-x-4 border border-white/40">
+                <!-- Top Left Control Panel (Disamakan dengan Box Identitas Developer) -->
+                <div class="sync-panel px-3.5 py-2 rounded-2xl flex items-center space-x-4">
                     <div class="flex flex-col items-center">
-                        <span class="text-[9px] font-black text-gray-800 uppercase tracking-wider mb-0.5">Power</span>
-                        <button id="powerBtn" class="w-8 h-8 rounded-full bg-gradient-to-tr from-gray-800 to-gray-950 border border-amber-400/60 shadow-lg flex items-center justify-center text-xs text-amber-400 hover:scale-105 transition">
+                        <span class="text-[8px] font-bold text-amber-300/80 uppercase tracking-widest mb-0.5">Power</span>
+                        <button id="powerBtn" class="w-8 h-8 rounded-full bg-gradient-to-tr from-gray-900 to-black border border-amber-400/60 shadow-lg flex items-center justify-center text-xs text-amber-400 hover:scale-105 transition">
                             <i class="fa-solid fa-power-off"></i>
                         </button>
                     </div>
                     <div class="flex flex-col items-center">
-                        <span class="text-[9px] font-black text-gray-800 uppercase tracking-wider mb-0.5">Speed</span>
-                        <button id="speedBtn" class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-gray-100 text-gray-900 border border-gray-400 shadow-inner hover:bg-gray-200 transition">
+                        <span class="text-[8px] font-bold text-amber-300/80 uppercase tracking-widest mb-0.5">Speed</span>
+                        <button id="speedBtn" class="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-amber-950 text-amber-200 border border-amber-500/50 shadow-inner hover:bg-amber-900 transition">
                             33 RPM
                         </button>
                     </div>
                 </div>
 
                 <!-- 3D Aesthetic Developer Badge -->
-                <div class="badge-3d px-4 py-2 rounded-xl text-center shadow-xl border border-amber-500/50 flex flex-col items-center justify-center">
+                <div class="sync-panel px-4 py-2 rounded-xl text-center flex flex-col items-center justify-center">
                     <span class="text-[8px] uppercase tracking-[0.2em] text-amber-300/80 font-bold">Created By</span>
                     <span class="text-xs md:text-sm font-extrabold text-amber-200 tracking-wider">developer : "fatur62"</span>
                 </div>
@@ -190,7 +201,7 @@
                 </div>
             </div>
 
-            <!-- Bottom Gold Control Panel / Pitch Slider area -->
+            <!-- Bottom Gold Control Panel / Transport area -->
             <div class="gold-panel w-full py-3 px-5 rounded-2xl flex flex-wrap items-center justify-between gap-3 z-30 border border-yellow-200/60 shadow-xl">
                 <!-- Track Status & Info -->
                 <div class="flex items-center space-x-3">
@@ -219,24 +230,6 @@
                     <i class="fa-solid fa-volume-high text-xs text-neutral-900"></i>
                     <input id="volumeSlider" type="range" min="0" max="1" step="0.05" value="0.7" class="w-16 md:w-20 h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer">
                 </div>
-            </div>
-        </div>
-
-        <!-- Track Selection and File Uploader Section -->
-        <div class="w-full max-w-[660px] mt-4 bg-[#14100d] border border-amber-900/40 rounded-2xl p-4 shadow-2xl">
-            <div class="flex items-center justify-between mb-3">
-                <h3 class="text-sm font-bold text-amber-200 uppercase tracking-wider flex items-center gap-2 font-serif">
-                    <i class="fa-solid fa-compact-disc text-amber-500"></i> Playlist & Audio Manager
-                </h3>
-                <label class="cursor-pointer bg-gradient-to-r from-amber-700 to-yellow-600 hover:from-amber-600 hover:to-yellow-500 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-lg transition flex items-center gap-1.5 border border-amber-400/40">
-                    <i class="fa-solid fa-folder-open"></i> Buka MP3
-                    <input type="file" id="audioUpload" accept="audio/*" multiple class="hidden">
-                </label>
-            </div>
-
-            <!-- Track List -->
-            <div id="playlistContainer" class="space-y-2 max-h-36 overflow-y-auto pr-1">
-                <!-- Populated via JavaScript -->
             </div>
         </div>
     </main>
@@ -303,75 +296,95 @@
         const audioUpload = document.getElementById('audioUpload');
 
         function renderPlaylist() {
-            playlistContainer.innerHTML = '';
-            tracks.forEach((track, index) => {
-                const item = document.createElement('div');
-                item.className = `flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition border ${index === currentTrackIndex ? 'bg-amber-950/60 border-amber-500/80 text-amber-200 shadow-md' : 'bg-neutral-900/60 border-neutral-800 text-gray-300 hover:bg-neutral-800'}`;
-                item.innerHTML = `
-                    <div class="flex items-center space-x-3 overflow-hidden">
-                        <span class="w-6 text-center text-xs text-amber-400 font-bold">${index + 1}</span>
-                        <div class="truncate">
-                            <p class="text-xs font-bold truncate">${track.title}</p>
-                            <p class="text-[10px] text-amber-500/70 truncate">${track.artist || 'Custom Audio'}</p>
+            try {
+                playlistContainer.innerHTML = '';
+                if (!Array.isArray(tracks)) {
+                    tracks = [];
+                }
+                tracks.forEach((track, index) => {
+                    const item = document.createElement('div');
+                    item.className = `flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition border ${index === currentTrackIndex ? 'bg-amber-950/60 border-amber-500/80 text-amber-200 shadow-md' : 'bg-neutral-900/60 border-neutral-800 text-gray-300 hover:bg-neutral-800'}`;
+                    item.innerHTML = `
+                        <div class="flex items-center space-x-3 overflow-hidden">
+                            <span class="w-6 text-center text-xs text-amber-400 font-bold">${index + 1}</span>
+                            <div class="truncate">
+                                <p class="text-xs font-bold truncate">${track.title || 'Untitled'}</p>
+                                <p class="text-[10px] text-amber-500/70 truncate">${track.artist || 'Custom Audio'}</p>
+                            </div>
                         </div>
-                    </div>
-                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-neutral-800 text-amber-300/80 border border-amber-500/20">${track.type || 'MP3'}</span>
-                `;
-                item.addEventListener('click', () => {
-                    currentTrackIndex = index;
-                    loadTrack(currentTrackIndex);
-                    if (isPlaying) {
-                        stopAudio();
-                        playAudio();
-                    }
+                        <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-neutral-800 text-amber-300/80 border border-amber-500/20">${track.type || 'MP3'}</span>
+                    `;
+                    item.addEventListener('click', () => {
+                        currentTrackIndex = index;
+                        loadTrack(currentTrackIndex);
+                        if (isPlaying) {
+                            stopAudio();
+                            playAudio();
+                        }
+                    });
+                    playlistContainer.appendChild(item);
                 });
-                playlistContainer.appendChild(item);
-            });
+            } catch (error) {
+                console.error("Error rendering playlist:", error);
+            }
         }
 
         function loadTrack(index) {
-            if (tracks.length === 0) return;
-            const track = tracks[index];
-            labelTitle.textContent = track.title;
-            labelArtist.textContent = track.artist || 'fatur62 Audio';
-            displayTitle.textContent = `${track.title} — ${track.artist || 'Custom Audio'}`;
-            
-            if (audioElement) {
-                audioElement.pause();
-                audioElement = null;
-            }
+            try {
+                if (!Array.isArray(tracks) || tracks.length === 0) return;
+                const safeIndex = Math.max(0, Math.min(index, tracks.length - 1));
+                const track = tracks[safeIndex];
+                
+                labelTitle.textContent = track.title || 'Untitled';
+                labelArtist.textContent = track.artist || 'fatur62 Audio';
+                displayTitle.textContent = `${track.title || 'Untitled'} — ${track.artist || 'Custom Audio'}`;
+                
+                if (audioElement) {
+                    audioElement.pause();
+                    audioElement = null;
+                }
 
-            if (track.type === 'file') {
-                audioElement = new Audio(track.url);
-                audioElement.loop = false;
-                audioElement.volume = parseFloat(volumeSlider.value);
-                audioElement.addEventListener('ended', () => {
-                    nextBtn.click();
-                });
-            }
+                if (track.type === 'file' && track.url) {
+                    audioElement = new Audio(track.url);
+                    audioElement.loop = false;
+                    audioElement.volume = parseFloat(volumeSlider.value);
+                    audioElement.addEventListener('ended', () => {
+                        nextBtn.click();
+                    });
+                }
 
-            renderPlaylist();
+                renderPlaylist();
+            } catch (error) {
+                console.error("Error loading track:", error);
+            }
         }
 
         function initAudioContext() {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+            } catch (error) {
+                console.error("Web Audio API error:", error);
             }
         }
 
         function playSynthMelody() {
             initAudioContext();
             const track = tracks[currentTrackIndex];
+            if (!track || !Array.isArray(track.melody)) return;
             let noteIndex = 0;
 
             synthLoop = setInterval(() => {
                 if (!isPlaying) return;
                 try {
                     const noteData = track.melody[noteIndex % track.melody.length];
-                    playTone(noteData.note, 0.6);
+                    if (noteData && noteData.note) {
+                        playTone(noteData.note, 0.6);
+                    }
                     noteIndex++;
                 } catch (e) {
                     console.error(e);
@@ -427,7 +440,7 @@
             toneArm.classList.add('tone-arm-playing');
 
             const track = tracks[currentTrackIndex];
-            if (track.type === 'file' && audioElement) {
+            if (track && track.type === 'file' && audioElement) {
                 audioElement.volume = parseFloat(volumeSlider.value);
                 audioElement.play().catch(err => console.log(err));
             } else {
@@ -523,28 +536,32 @@
         });
 
         audioUpload.addEventListener('change', (e) => {
-            const files = e.target.files;
-            if (!files || files.length === 0) return;
+            try {
+                const files = e.target.files;
+                if (!files || files.length === 0) return;
 
-            let firstNewIndex = tracks.length;
+                let firstNewIndex = tracks.length;
 
-            Array.from(files).forEach((file, idx) => {
-                const fileURL = URL.createObjectURL(file);
-                const fileName = file.name.replace(/\.[^/.]+$/, "");
-                tracks.push({
-                    title: fileName,
-                    artist: "fatur62 File",
-                    type: "file",
-                    url: fileURL
+                Array.from(files).forEach((file) => {
+                    const fileURL = URL.createObjectURL(file);
+                    const fileName = file.name.replace(/\.[^/.]+$/, "");
+                    tracks.push({
+                        title: fileName,
+                        artist: "fatur62 File",
+                        type: "file",
+                        url: fileURL
+                    });
                 });
-            });
 
-            currentTrackIndex = firstNewIndex;
-            loadTrack(currentTrackIndex);
+                currentTrackIndex = firstNewIndex;
+                loadTrack(currentTrackIndex);
 
-            if (isPlaying) {
-                stopAudio();
-                playAudio();
+                if (isPlaying) {
+                    stopAudio();
+                    playAudio();
+                }
+            } catch (error) {
+                console.error("Error uploading audio files:", error);
             }
         });
 
