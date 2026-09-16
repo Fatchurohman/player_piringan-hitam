@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vintage Vinyl Record Player</title>
+    <title>Luxury Vintage Turntable - fatur62</title>
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cinzel:wght@600;700&display=swap');
+        
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #121214;
+            background: radial-gradient(circle at center, #1a1512 0%, #0d0a08 100%);
         }
 
         /* Vinyl Spin Animation */
@@ -25,176 +26,209 @@
             animation: spin 1.8s linear infinite;
         }
 
-        /* Tone Arm Pivoting */
+        /* Luxury Wooden Mahogany Chassis */
+        .wooden-base {
+            background: linear-gradient(135deg, #2c160b 0%, #1a0d06 50%, #110804 100%),
+                        url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=1000');
+            background-blend-mode: overlay;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9), 
+                        inset 0 2px 6px rgba(255, 255, 255, 0.15),
+                        inset 0 -5px 15px rgba(0, 0, 0, 0.8);
+            border: 4px solid #42200c;
+        }
+
+        /* Gold Brushed Metallic Panel */
+        .gold-panel {
+            background: linear-gradient(135deg, #fef08a 0%, #ca8a04 30%, #eab308 50%, #854d0e 100%);
+            box-shadow: inset 0 1px 3px rgba(255,255,255,0.7), 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        /* Brushed Aluminum Panel */
+        .silver-panel {
+            background: linear-gradient(135deg, #e5e7eb 0%, #9ca3af 50%, #4b5563 100%);
+            box-shadow: inset 0 1px 3px rgba(255,255,255,0.8), 0 8px 16px rgba(0,0,0,0.4);
+        }
+
+        /* 3D Aesthetic Developer Badge Styling */
+        .badge-3d {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(135deg, #451a03 0%, #78350f 50%, #1f1005 100%);
+            color: #fde047;
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.9), 0 -1px 1px rgba(255, 255, 255, 0.4);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.6), 
+                        inset 0 2px 3px rgba(255, 215, 0, 0.3),
+                        inset 0 -2px 4px rgba(0, 0, 0, 0.8);
+            border: 1.5px solid #d97706;
+            letter-spacing: 0.15em;
+        }
+
+        /* Tone Arm Rest vs Playing Positions */
         .tone-arm-container {
             transform-origin: 215px 45px;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .tone-arm-rest {
-            transform: rotate(0deg);
+            transform: rotate(30deg); /* Posisi di luar pinggir kanan piringan hitam saat stop */
         }
 
         .tone-arm-playing {
-            transform: rotate(23deg);
-        }
-
-        /* Wooden Texture Shadow and Styling */
-        .wooden-base {
-            background: linear-gradient(135deg, #3d2314 0%, #29170c 100%),
-                        url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=1000');
-            background-blend-mode: overlay;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(255, 255, 255, 0.1);
-        }
-
-        .metallic-panel {
-            background: linear-gradient(135deg, #e0e0e0 0%, #b8b8b8 50%, #9e9e9e 100%);
-            box-shadow: inset 0 1px 3px rgba(255,255,255,0.8), 0 4px 6px rgba(0,0,0,0.3);
+            transform: rotate(10deg); /* Bergeser masuk di atas piringan hitam saat play */
         }
 
         /* Custom Range Slider */
         input[type=range] {
-            accent-color: #b45309;
+            accent-color: #ca8a04;
         }
     </style>
 </head>
 <body class="min-h-screen text-gray-100 flex flex-col items-center justify-between p-4 md:p-8">
 
-    <header class="text-center mb-4">
-        <h1 class="text-3xl font-extrabold tracking-wider bg-gradient-to-r from-amber-200 via-orange-400 to-amber-600 bg-clip-text text-transparent drop-shadow">
-            VINTAGE TURNTABLE
+    <header class="text-center mb-2">
+        <h1 class="text-3xl md:text-4xl font-extrabold tracking-widest bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-600 bg-clip-text text-transparent drop-shadow-lg font-serif">
+            LUXURY TURNTABLE
         </h1>
-        <p class="text-xs text-gray-400 mt-1 uppercase tracking-widest">Hi-Fi Analog Sound Experience</p>
+        <p class="text-[10px] md:text-xs text-amber-500/80 mt-1 uppercase tracking-[0.3em] font-semibold">High-End Analog Masterpiece</p>
     </header>
 
     <main class="w-full max-w-4xl flex flex-col items-center justify-center">
         <!-- Turntable Wooden Chassis -->
-        <div class="wooden-base relative w-full max-w-[640px] min-h-[520px] rounded-3xl p-5 md:p-8 border-4 border-[#211208] flex flex-col justify-between overflow-hidden shadow-2xl">
+        <div class="wooden-base relative w-full max-w-[660px] min-h-[540px] rounded-3xl p-5 md:p-8 flex flex-col justify-between overflow-hidden">
             
-            <!-- Dust Cover / Hinges top hint -->
-            <div class="absolute top-2 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-white/10 rounded-full blur-[1px]"></div>
+            <!-- Golden Corner Accents -->
+            <div class="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-amber-500/60 rounded-tl-xl pointer-events-none"></div>
+            <div class="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-amber-500/60 rounded-tr-xl pointer-events-none"></div>
+            <div class="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-amber-500/60 rounded-bl-xl pointer-events-none"></div>
+            <div class="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-amber-500/60 rounded-br-xl pointer-events-none"></div>
 
             <!-- Top Controls Wrapper -->
             <div class="flex items-center justify-between w-full z-30">
                 <!-- Top Left Silver Control Panel (Power & Speed) -->
-                <div class="metallic-panel px-3 py-2 rounded-xl flex items-center space-x-4 border border-white/40">
+                <div class="silver-panel px-3.5 py-2.5 rounded-2xl flex items-center space-x-4 border border-white/40">
                     <div class="flex flex-col items-center">
-                        <span class="text-[9px] font-bold text-gray-700 uppercase tracking-wider mb-0.5">Power</span>
-                        <button id="powerBtn" class="w-7 h-7 rounded-full bg-gradient-to-tr from-gray-700 to-gray-900 border border-gray-400 shadow flex items-center justify-center text-xs text-amber-400 hover:scale-105 transition">
+                        <span class="text-[9px] font-black text-gray-800 uppercase tracking-wider mb-0.5">Power</span>
+                        <button id="powerBtn" class="w-8 h-8 rounded-full bg-gradient-to-tr from-gray-800 to-gray-950 border border-amber-400/60 shadow-lg flex items-center justify-center text-xs text-amber-400 hover:scale-105 transition">
                             <i class="fa-solid fa-power-off"></i>
                         </button>
                     </div>
                     <div class="flex flex-col items-center">
-                        <span class="text-[9px] font-bold text-gray-700 uppercase tracking-wider mb-0.5">Speed</span>
-                        <button id="speedBtn" class="text-[11px] font-bold px-2 py-0.5 rounded bg-gray-200 text-gray-800 border border-gray-400 shadow-inner hover:bg-gray-300 transition">
+                        <span class="text-[9px] font-black text-gray-800 uppercase tracking-wider mb-0.5">Speed</span>
+                        <button id="speedBtn" class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-gray-100 text-gray-900 border border-gray-400 shadow-inner hover:bg-gray-200 transition">
                             33 RPM
                         </button>
                     </div>
                 </div>
+
+                <!-- 3D Aesthetic Developer Badge -->
+                <div class="badge-3d px-4 py-2 rounded-xl text-center shadow-xl border border-amber-500/50 flex flex-col items-center justify-center">
+                    <span class="text-[8px] uppercase tracking-[0.2em] text-amber-300/80 font-bold">Created By</span>
+                    <span class="text-xs md:text-sm font-extrabold text-amber-200 tracking-wider">developer : "fatur62"</span>
+                </div>
             </div>
 
             <!-- Main Turntable Platter and Vinyl Record -->
-            <div class="relative w-[240px] h-[240px] md:w-[300px] md:h-[300px] mx-auto my-3 flex items-center justify-center z-10">
-                <!-- Silver Platter Rim -->
-                <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-gray-300 via-gray-100 to-gray-500 shadow-xl border-4 border-gray-400 flex items-center justify-center">
-                    <!-- Black Vinyl Record -->
-                    <div id="vinylRecord" class="relative w-[92%] h-[92%] rounded-full bg-gradient-to-tr from-neutral-950 via-neutral-900 to-neutral-950 shadow-2xl flex items-center justify-center border border-neutral-800">
+            <div class="relative w-[250px] h-[250px] md:w-[310px] md:h-[310px] mx-auto my-3 flex items-center justify-center z-10">
+                <!-- Luxury Gold Platter Rim -->
+                <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-amber-600 via-yellow-200 to-amber-700 shadow-2xl border-4 border-amber-800 flex items-center justify-center">
+                    <!-- Black Vinyl Record with Glossy Reflection -->
+                    <div id="vinylRecord" class="relative w-[93%] h-[93%] rounded-full bg-gradient-to-tr from-neutral-950 via-neutral-900 to-neutral-950 shadow-2xl flex items-center justify-center border border-neutral-800">
                         <!-- Vinyl Grooves Rings -->
-                        <div class="absolute inset-4 rounded-full border border-neutral-800/60 pointer-events-none"></div>
-                        <div class="absolute inset-8 rounded-full border border-neutral-800/60 pointer-events-none"></div>
-                        <div class="absolute inset-12 rounded-full border border-neutral-800/60 pointer-events-none"></div>
-                        <div class="absolute inset-16 rounded-full border border-neutral-800/60 pointer-events-none"></div>
-                        <div class="absolute inset-20 rounded-full border border-neutral-800/60 pointer-events-none"></div>
-                        <div class="absolute inset-24 rounded-full border border-neutral-800/60 pointer-events-none"></div>
+                        <div class="absolute inset-3 rounded-full border border-amber-500/10 pointer-events-none"></div>
+                        <div class="absolute inset-6 rounded-full border border-neutral-800/80 pointer-events-none"></div>
+                        <div class="absolute inset-10 rounded-full border border-amber-500/10 pointer-events-none"></div>
+                        <div class="absolute inset-14 rounded-full border border-neutral-800/80 pointer-events-none"></div>
+                        <div class="absolute inset-18 rounded-full border border-amber-500/10 pointer-events-none"></div>
+                        <div class="absolute inset-22 rounded-full border border-neutral-800/80 pointer-events-none"></div>
+                        <div class="absolute inset-26 rounded-full border border-neutral-800/10 pointer-events-none"></div>
 
-                        <!-- Record Center Label -->
-                        <div id="recordLabel" class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-tr from-amber-700 via-orange-600 to-amber-500 border-4 border-amber-900 shadow-md flex flex-col items-center justify-center text-center p-2 relative overflow-hidden pointer-events-none">
-                            <div class="absolute inset-0 bg-black/10"></div>
-                            <span id="labelArtist" class="text-[8px] md:text-[9px] font-bold text-amber-100 uppercase tracking-widest z-10 truncate w-full">Lo-Fi Dream</span>
-                            <span id="labelTitle" class="text-[10px] md:text-[11px] font-extrabold text-white tracking-wide z-10 truncate w-full mt-0.5">Midnight Jazz</span>
+                        <!-- Record Center Label (Gold Luxury) -->
+                        <div id="recordLabel" class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-tr from-amber-600 via-yellow-500 to-amber-700 border-4 border-amber-900 shadow-inner flex flex-col items-center justify-center text-center p-2 relative overflow-hidden pointer-events-none">
+                            <div class="absolute inset-0 bg-black/15"></div>
+                            <span id="labelArtist" class="text-[8px] md:text-[9px] font-bold text-amber-100 uppercase tracking-widest z-10 truncate w-full">Luxury Audio</span>
+                            <span id="labelTitle" class="text-[10px] md:text-[11px] font-extrabold text-white tracking-wide z-10 truncate w-full mt-0.5">Gold Masterpiece</span>
                             <!-- Center Spindle Hole -->
-                            <div class="w-3.5 h-3.5 rounded-full bg-gray-300 border-2 border-gray-500 z-10 mt-1 shadow-inner"></div>
+                            <div class="w-3.5 h-3.5 rounded-full bg-neutral-300 border-2 border-neutral-600 z-10 mt-1 shadow-inner"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Tone Arm Assembly -->
+                <!-- Tone Arm Assembly (Accurate Stop & Play Positioning) -->
                 <div id="toneArm" class="tone-arm-container tone-arm-rest absolute -top-4 -right-4 w-40 h-56 pointer-events-none z-20">
-                    <svg viewBox="0 0 250 250" class="w-full h-full drop-shadow-xl">
-                        <!-- Tone Arm Base Mount -->
-                        <circle cx="215" cy="45" r="24" fill="url(#silverGrad)" stroke="#666" stroke-width="2"/>
-                        <circle cx="215" cy="45" r="16" fill="#333"/>
-                        <circle cx="215" cy="45" r="6" fill="url(#silverGrad)"/>
+                    <svg viewBox="0 0 250 250" class="w-full h-full drop-shadow-2xl">
+                        <!-- Tone Arm Base Mount (Gold Trim) -->
+                        <circle cx="215" cy="45" r="24" fill="url(#goldGrad)" stroke="#78350f" stroke-width="2.5"/>
+                        <circle cx="215" cy="45" r="16" fill="#1c1917"/>
+                        <circle cx="215" cy="45" r="6" fill="url(#goldGrad)"/>
                         
                         <!-- Anti-skate & Cueing Levers -->
-                        <rect x="195" y="30" width="8" height="15" rx="3" fill="#222" />
-                        <line x1="205" y1="55" x2="198" y2="65" stroke="#444" stroke-width="3" stroke-linecap="round"/>
+                        <rect x="195" y="30" width="8" height="15" rx="3" fill="#111" stroke="#d97706" stroke-width="0.5"/>
+                        <line x1="205" y1="55" x2="198" y2="65" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
 
                         <!-- Counterweight at the back -->
-                        <rect x="210" y="10" width="12" height="22" rx="4" fill="#111" stroke="#444" stroke-width="1.5"/>
-                        <circle cx="216" cy="15" r="5" fill="#444"/>
+                        <rect x="210" y="10" width="12" height="22" rx="4" fill="#0c0a09" stroke="#d97706" stroke-width="1.5"/>
+                        <circle cx="216" cy="15" r="5" fill="#d97706"/>
 
-                        <!-- Metallic Tubular Arm -->
-                        <path d="M 215 45 L 215 85 Q 215 130 140 160 L 95 175" fill="none" stroke="url(#silverGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M 215 45 L 215 85 Q 215 130 140 160 L 95 175" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-1, -1)"/>
+                        <!-- Metallic Golden Tubular Arm -->
+                        <path d="M 215 45 L 215 85 Q 215 130 140 160 L 95 175" fill="none" stroke="url(#goldGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 215 45 L 215 85 Q 215 130 140 160 L 95 175" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-1, -1)"/>
 
                         <!-- Cartridge / HeadShell -->
                         <g transform="translate(90, 168) rotate(15)">
-                            <rect x="0" y="0" width="16" height="24" rx="3" fill="#111" stroke="#ccc" stroke-width="1"/>
-                            <rect x="3" y="18" width="10" height="8" fill="#c2410c" />
+                            <rect x="0" y="0" width="16" height="24" rx="3" fill="#1c1917" stroke="#fde047" stroke-width="1.2"/>
+                            <rect x="3" y="18" width="10" height="8" fill="#ca8a04" />
                         </g>
 
                         <!-- SVG Gradients -->
                         <defs>
-                            <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#f3f4f6" />
-                                <stop offset="50%" stop-color="#9ca3af" />
-                                <stop offset="100%" stop-color="#4b5563" />
+                            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#fef08a" />
+                                <stop offset="50%" stop-color="#ca8a04" />
+                                <stop offset="100%" stop-color="#78350f" />
                             </linearGradient>
                         </defs>
                     </svg>
                 </div>
             </div>
 
-            <!-- Bottom Control Panel / Pitch Slider area -->
-            <div class="metallic-panel w-full py-2.5 px-4 rounded-2xl flex flex-wrap items-center justify-between gap-3 z-30 border border-white/40">
+            <!-- Bottom Gold Control Panel / Pitch Slider area -->
+            <div class="gold-panel w-full py-3 px-5 rounded-2xl flex flex-wrap items-center justify-between gap-3 z-30 border border-yellow-200/60 shadow-xl">
                 <!-- Track Status & Info -->
-                <div class="flex items-center space-x-2.5">
-                    <div id="statusIndicator" class="w-3 h-3 rounded-full bg-red-600 shadow animate-pulse"></div>
+                <div class="flex items-center space-x-3">
+                    <div id="statusIndicator" class="w-3.5 h-3.5 rounded-full bg-red-600 shadow-md animate-pulse border border-red-900"></div>
                     <div>
-                        <h4 id="displayTitle" class="text-xs font-bold text-gray-900">Midnight Jazz (Sample)</h4>
-                        <p id="displayStatus" class="text-[10px] text-gray-600 font-medium">System Standby</p>
+                        <h4 id="displayTitle" class="text-xs font-black text-neutral-900 tracking-wide">Gold Masterpiece (Sample)</h4>
+                        <p id="displayStatus" class="text-[10px] text-neutral-800 font-bold">System Standby</p>
                     </div>
                 </div>
 
                 <!-- Transport Controls -->
-                <div class="flex items-center space-x-2">
-                    <button id="prevBtn" title="Previous Track" class="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-800 border border-gray-400 shadow flex items-center justify-center transition active:scale-95">
+                <div class="flex items-center space-x-2.5">
+                    <button id="prevBtn" title="Previous Track" class="w-9 h-9 rounded-full bg-neutral-900 hover:bg-neutral-800 text-amber-300 border border-amber-500/60 shadow-md flex items-center justify-center transition active:scale-95">
                         <i class="fa-solid fa-backward-step text-xs"></i>
                     </button>
-                    <button id="playPauseBtn" title="Play / Pause" class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-700 to-amber-600 hover:from-amber-600 hover:to-amber-500 text-white shadow-lg flex items-center justify-center text-sm transition active:scale-95 border-2 border-amber-800">
+                    <button id="playPauseBtn" title="Play / Pause" class="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-800 via-amber-600 to-yellow-500 hover:from-amber-700 hover:to-yellow-400 text-white shadow-xl flex items-center justify-center text-sm transition active:scale-95 border-2 border-amber-200">
                         <i id="playIcon" class="fa-solid fa-play ml-0.5"></i>
                     </button>
-                    <button id="nextBtn" title="Next Track" class="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-800 border border-gray-400 shadow flex items-center justify-center transition active:scale-95">
+                    <button id="nextBtn" title="Next Track" class="w-9 h-9 rounded-full bg-neutral-900 hover:bg-neutral-800 text-amber-300 border border-amber-500/60 shadow-md flex items-center justify-center transition active:scale-95">
                         <i class="fa-solid fa-forward-step text-xs"></i>
                     </button>
                 </div>
 
-                <!-- Volume & Pitch Adjuster -->
+                <!-- Volume Adjuster -->
                 <div class="flex items-center space-x-2">
-                    <i class="fa-solid fa-volume-high text-xs text-gray-700"></i>
-                    <input id="volumeSlider" type="range" min="0" max="1" step="0.05" value="0.7" class="w-16 md:w-20 h-1.5 bg-gray-400 rounded-lg appearance-none cursor-pointer">
+                    <i class="fa-solid fa-volume-high text-xs text-neutral-900"></i>
+                    <input id="volumeSlider" type="range" min="0" max="1" step="0.05" value="0.7" class="w-16 md:w-20 h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer">
                 </div>
             </div>
         </div>
 
         <!-- Track Selection and File Uploader Section -->
-        <div class="w-full max-w-[640px] mt-4 bg-[#1a1a1e] border border-neutral-800 rounded-2xl p-4 shadow-xl">
+        <div class="w-full max-w-[660px] mt-4 bg-[#14100d] border border-amber-900/40 rounded-2xl p-4 shadow-2xl">
             <div class="flex items-center justify-between mb-3">
-                <h3 class="text-sm font-bold text-gray-200 uppercase tracking-wider flex items-center gap-2">
-                    <i class="fa-solid fa-compact-disc text-amber-500"></i> Playlist & Audio Source
+                <h3 class="text-sm font-bold text-amber-200 uppercase tracking-wider flex items-center gap-2 font-serif">
+                    <i class="fa-solid fa-compact-disc text-amber-500"></i> Playlist & Audio Manager
                 </h3>
-                <label class="cursor-pointer bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow transition flex items-center gap-1.5">
+                <label class="cursor-pointer bg-gradient-to-r from-amber-700 to-yellow-600 hover:from-amber-600 hover:to-yellow-500 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-lg transition flex items-center gap-1.5 border border-amber-400/40">
                     <i class="fa-solid fa-folder-open"></i> Buka MP3
                     <input type="file" id="audioUpload" accept="audio/*" multiple class="hidden">
                 </label>
@@ -207,16 +241,16 @@
         </div>
     </main>
 
-    <footer class="mt-4 text-center text-xs text-gray-500">
-        <p>Interactive Vinyl Turntable • Crafted with HTML, Tailwind CSS & JavaScript</p>
+    <footer class="mt-4 text-center text-xs text-amber-500/60 font-medium">
+        <p>Luxury Analog Turntable • Designed & Engineered by fatur62</p>
     </footer>
 
     <!-- JavaScript Application Logic -->
     <script>
         let tracks = [
             {
-                title: "Midnight Jazz",
-                artist: "Lo-Fi Dream",
+                title: "Gold Masterpiece",
+                artist: "Luxury Sound",
                 type: "synth",
                 melody: [
                     { note: 'C4', dur: '4n' }, { note: 'Eb4', dur: '4n' }, { note: 'G4', dur: '4n' }, { note: 'Bb4', dur: '2n' },
@@ -224,8 +258,8 @@
                 ]
             },
             {
-                title: "Vintage Sunset",
-                artist: "Retro Waves",
+                title: "Vintage Velvet",
+                artist: "Retro Audio",
                 type: "synth",
                 melody: [
                     { note: 'A3', dur: '4n' }, { note: 'C4', dur: '4n' }, { note: 'E4', dur: '4n' }, { note: 'G4', dur: '2n' },
@@ -233,7 +267,7 @@
                 ]
             },
             {
-                title: "Vinyl Acoustic",
+                title: "Analog Symphony",
                 artist: "Classic Melodies",
                 type: "synth",
                 melody: [
@@ -272,16 +306,16 @@
             playlistContainer.innerHTML = '';
             tracks.forEach((track, index) => {
                 const item = document.createElement('div');
-                item.className = `flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition border ${index === currentTrackIndex ? 'bg-amber-950/40 border-amber-600/50 text-amber-200' : 'bg-neutral-900/60 border-neutral-800 text-gray-300 hover:bg-neutral-800'}`;
+                item.className = `flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition border ${index === currentTrackIndex ? 'bg-amber-950/60 border-amber-500/80 text-amber-200 shadow-md' : 'bg-neutral-900/60 border-neutral-800 text-gray-300 hover:bg-neutral-800'}`;
                 item.innerHTML = `
                     <div class="flex items-center space-x-3 overflow-hidden">
-                        <span class="w-6 text-center text-xs text-amber-500 font-bold">${index + 1}</span>
+                        <span class="w-6 text-center text-xs text-amber-400 font-bold">${index + 1}</span>
                         <div class="truncate">
                             <p class="text-xs font-bold truncate">${track.title}</p>
-                            <p class="text-[10px] text-gray-400 truncate">${track.artist || 'Custom Audio'}</p>
+                            <p class="text-[10px] text-amber-500/70 truncate">${track.artist || 'Custom Audio'}</p>
                         </div>
                     </div>
-                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-neutral-800 text-gray-400">${track.type || 'MP3'}</span>
+                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-neutral-800 text-amber-300/80 border border-amber-500/20">${track.type || 'MP3'}</span>
                 `;
                 item.addEventListener('click', () => {
                     currentTrackIndex = index;
@@ -299,7 +333,7 @@
             if (tracks.length === 0) return;
             const track = tracks[index];
             labelTitle.textContent = track.title;
-            labelArtist.textContent = track.artist || 'Custom File';
+            labelArtist.textContent = track.artist || 'fatur62 Audio';
             displayTitle.textContent = `${track.title} — ${track.artist || 'Custom Audio'}`;
             
             if (audioElement) {
@@ -383,8 +417,8 @@
             isPlaying = true;
 
             playIcon.className = "fa-solid fa-pause ml-0";
-            statusIndicator.className = "w-3 h-3 rounded-full bg-emerald-500 shadow animate-pulse";
-            displayStatus.textContent = "Playing Analog Audio...";
+            statusIndicator.className = "w-3.5 h-3.5 rounded-full bg-emerald-500 shadow-md animate-pulse border border-emerald-900";
+            displayStatus.textContent = "Playing Luxury Audio...";
 
             vinylRecord.classList.add('vinyl-spinning');
             updateSpinSpeed();
@@ -405,7 +439,7 @@
             isPlaying = false;
 
             playIcon.className = "fa-solid fa-play ml-0.5";
-            statusIndicator.className = "w-3 h-3 rounded-full bg-red-600 shadow animate-pulse";
+            statusIndicator.className = "w-3.5 h-3.5 rounded-full bg-red-600 shadow-md animate-pulse border border-red-900";
             displayStatus.textContent = "Paused / Standby";
 
             vinylRecord.classList.remove('vinyl-spinning');
@@ -444,12 +478,12 @@
                 powerBtn.classList.remove('text-amber-400');
                 powerBtn.classList.add('text-gray-500');
                 displayStatus.textContent = "Powered Off";
-                statusIndicator.className = "w-3 h-3 rounded-full bg-neutral-700 shadow";
+                statusIndicator.className = "w-3.5 h-3.5 rounded-full bg-neutral-700 shadow-md border border-neutral-900";
             } else {
                 powerBtn.classList.remove('text-gray-500');
                 powerBtn.classList.add('text-amber-400');
                 displayStatus.textContent = "System Ready";
-                statusIndicator.className = "w-3 h-3 rounded-full bg-red-600 shadow animate-pulse";
+                statusIndicator.className = "w-3.5 h-3.5 rounded-full bg-red-600 shadow-md animate-pulse border border-red-900";
             }
         });
 
@@ -499,7 +533,7 @@
                 const fileName = file.name.replace(/\.[^/.]+$/, "");
                 tracks.push({
                     title: fileName,
-                    artist: "Local File",
+                    artist: "fatur62 File",
                     type: "file",
                     url: fileURL
                 });
