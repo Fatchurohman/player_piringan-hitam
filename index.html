@@ -79,6 +79,7 @@
 
     <main class="w-full max-w-4xl flex flex-col items-center justify-center space-y-4">
         
+        <!-- Playlist & Upload -->
         <div class="w-full max-w-[660px] bg-[#14100d] border border-amber-900/40 rounded-2xl p-4 shadow-2xl z-30">
             <div class="flex items-center justify-between mb-3">
                 <h3 class="text-sm font-bold text-amber-200 uppercase tracking-wider flex items-center gap-2 font-serif">
@@ -90,18 +91,20 @@
                 </label>
             </div>
 
-            <div id="playlistContainer" class="space-y-2 max-h-32 overflow-y-auto pr-1"></div>
+            <div id="playlistContainer" class="space-y-2 max-h-36 overflow-y-auto pr-1"></div>
         </div>
 
-        <div class="wooden-base relative w-full max-w-[660px] min-h-[540px] rounded-3xl p-5 md:p-8 flex flex-col justify-between overflow-hidden">
+        <!-- Turntable Body -->
+        <div class="wooden-base relative w-full max-w-[660px] min-h-[560px] rounded-3xl p-5 md:p-8 flex flex-col justify-between overflow-hidden">
             
             <div class="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-amber-500/60 rounded-tl-xl pointer-events-none"></div>
             <div class="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-amber-500/60 rounded-tr-xl pointer-events-none"></div>
             <div class="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-amber-500/60 rounded-bl-xl pointer-events-none"></div>
             <div class="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-amber-500/60 rounded-br-xl pointer-events-none"></div>
 
-            <div class="flex items-center justify-between w-full z-30">
-                <div class="sync-panel px-3.5 py-2 rounded-2xl flex items-center space-x-4">
+            <!-- Top Controls -->
+            <div class="flex flex-wrap items-center justify-between gap-2 w-full z-30">
+                <div class="sync-panel px-3 py-2 rounded-2xl flex items-center space-x-3">
                     <div class="flex flex-col items-center">
                         <span class="text-[8px] font-bold text-amber-300/80 uppercase tracking-widest mb-0.5">Power</span>
                         <button id="powerBtn" class="w-8 h-8 rounded-full bg-gradient-to-tr from-gray-900 to-black border border-amber-400/60 shadow-lg flex items-center justify-center text-xs text-amber-400 hover:scale-105 transition">
@@ -110,19 +113,26 @@
                     </div>
                     <div class="flex flex-col items-center">
                         <span class="text-[8px] font-bold text-amber-300/80 uppercase tracking-widest mb-0.5">Speed</span>
-                        <button id="speedBtn" class="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-amber-950 text-amber-200 border border-amber-500/50 shadow-inner hover:bg-amber-900 transition">
+                        <button id="speedBtn" class="text-[10px] font-bold px-2 py-1 rounded-lg bg-amber-950 text-amber-200 border border-amber-500/50 shadow-inner hover:bg-amber-900 transition">
                             33 RPM
+                        </button>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-[8px] font-bold text-amber-300/80 uppercase tracking-widest mb-0.5">Vinyl FX</span>
+                        <button id="crackleBtn" title="Efek Kresek-kresek Vinyl" class="text-[10px] font-bold px-2 py-1 rounded-lg bg-neutral-900 text-gray-400 border border-amber-500/30 shadow-inner hover:bg-amber-900 transition">
+                            OFF
                         </button>
                     </div>
                 </div>
 
-                <div class="sync-panel px-4 py-2 rounded-xl text-center flex flex-col items-center justify-center">
+                <div class="sync-panel px-3.5 py-2 rounded-xl text-center flex flex-col items-center justify-center">
                     <span class="text-[8px] uppercase tracking-[0.2em] text-amber-300/80 font-bold">Created By</span>
                     <span class="text-xs md:text-sm font-extrabold text-amber-200 tracking-wider">developer : "fatur62"</span>
                 </div>
             </div>
 
-            <div class="relative w-[250px] h-[250px] md:w-[310px] md:h-[310px] mx-auto my-3 flex items-center justify-center z-10">
+            <!-- Vinyl Platter & Tone Arm -->
+            <div class="relative w-[240px] h-[240px] md:w-[300px] md:h-[300px] mx-auto my-3 flex items-center justify-center z-10">
                 <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-amber-600 via-yellow-200 to-amber-700 shadow-2xl border-4 border-amber-800 flex items-center justify-center">
                     <div id="vinylRecord" class="relative w-[93%] h-[93%] rounded-full bg-gradient-to-tr from-neutral-950 via-neutral-900 to-neutral-950 shadow-2xl flex items-center justify-center border border-neutral-800">
                         <div class="absolute inset-3 rounded-full border border-amber-500/10 pointer-events-none"></div>
@@ -173,16 +183,25 @@
                 </div>
             </div>
 
-            <div class="gold-panel w-full py-3 px-5 rounded-2xl flex flex-wrap items-center justify-between gap-3 z-30 border border-yellow-200/60 shadow-xl">
-                <div class="flex items-center space-x-3">
-                    <div id="statusIndicator" class="w-3.5 h-3.5 rounded-full bg-red-600 shadow-md animate-pulse border border-red-900"></div>
-                    <div>
-                        <h4 id="displayTitle" class="text-xs font-black text-neutral-900 tracking-wide">Menghubungkan GitHub...</h4>
-                        <p id="displayStatus" class="text-[10px] text-neutral-800 font-bold">System Standby</p>
+            <!-- Gold Spectrum Visualizer -->
+            <div class="w-full h-10 mb-2.5 bg-black/60 border border-amber-600/40 rounded-xl px-2 py-1 shadow-inner z-30 flex items-center justify-center overflow-hidden">
+                <canvas id="visualizerCanvas" class="w-full h-full"></canvas>
+            </div>
+
+            <!-- Gold Control Panel -->
+            <div class="gold-panel w-full py-3 px-4 rounded-2xl flex flex-wrap items-center justify-between gap-3 z-30 border border-yellow-200/60 shadow-xl">
+                <div class="flex items-center space-x-2.5 min-w-0 flex-1">
+                    <div id="statusIndicator" class="w-3.5 h-3.5 shrink-0 rounded-full bg-red-600 shadow-md animate-pulse border border-red-900"></div>
+                    <div class="min-w-0">
+                        <h4 id="displayTitle" class="text-xs font-black text-neutral-900 tracking-wide truncate">Menghubungkan GitHub...</h4>
+                        <p id="displayStatus" class="text-[10px] text-neutral-800 font-bold truncate">System Standby</p>
                     </div>
                 </div>
 
-                <div class="flex items-center space-x-2.5">
+                <div class="flex items-center space-x-1.5">
+                    <button id="shuffleBtn" title="Shuffle (Acak)" class="w-8 h-8 rounded-full bg-neutral-900/80 hover:bg-neutral-800 text-amber-300/50 border border-amber-500/40 shadow flex items-center justify-center transition active:scale-95">
+                        <i class="fa-solid fa-shuffle text-[11px]"></i>
+                    </button>
                     <button id="prevBtn" title="Previous Track" class="w-9 h-9 rounded-full bg-neutral-900 hover:bg-neutral-800 text-amber-300 border border-amber-500/60 shadow-md flex items-center justify-center transition active:scale-95">
                         <i class="fa-solid fa-backward-step text-xs"></i>
                     </button>
@@ -191,6 +210,9 @@
                     </button>
                     <button id="nextBtn" title="Next Track" class="w-9 h-9 rounded-full bg-neutral-900 hover:bg-neutral-800 text-amber-300 border border-amber-500/60 shadow-md flex items-center justify-center transition active:scale-95">
                         <i class="fa-solid fa-forward-step text-xs"></i>
+                    </button>
+                    <button id="repeatBtn" title="Repeat 1 Lagu" class="w-8 h-8 rounded-full bg-neutral-900/80 hover:bg-neutral-800 text-amber-300/50 border border-amber-500/40 shadow flex items-center justify-center transition active:scale-95">
+                        <i class="fa-solid fa-repeat text-[11px]"></i>
                     </button>
                 </div>
 
@@ -206,14 +228,14 @@
         <p>Luxury Analog Turntable • Designed & Engineered by fatur62</p>
     </footer>
 
-    <!-- JavaScript Application Logic (Single-File + GitHub Loader) -->
+    <!-- JavaScript Application Logic -->
     <script>
         // Konfigurasi Repo GitHub
         const GITHUB_USER = "Fatchurohman";
         const GITHUB_REPO = "lagu-suno-kreasiku";
         const JSON_PATH = "songs.json";
 
-        // Array global tracks penampung data utama
+        // Array global tracks
         let tracks = [
             {
                 title: "Memuat Repository...",
@@ -227,16 +249,31 @@
         let isPlaying = false;
         let isPoweredOn = true;
         let currentSpeed = 33;
-        let audioCtx = null;
-        let synthLoop = null;
-        let audioElement = null;
+        let isShuffle = false;
+        let isRepeat = false;
+        let isCrackleOn = false;
 
+        // Audio & Web Audio API
+        const audioElement = new Audio();
+        audioElement.crossOrigin = "anonymous";
+        let audioCtx = null;
+        let analyser = null;
+        let sourceNode = null;
+        let crackleSource = null;
+        let crackleGain = null;
+        let synthLoop = null;
+        let animFrameId = null;
+
+        // DOM Elements
         const vinylRecord = document.getElementById('vinylRecord');
         const toneArm = document.getElementById('toneArm');
         const playPauseBtn = document.getElementById('playPauseBtn');
         const playIcon = document.getElementById('playIcon');
         const powerBtn = document.getElementById('powerBtn');
         const speedBtn = document.getElementById('speedBtn');
+        const crackleBtn = document.getElementById('crackleBtn');
+        const shuffleBtn = document.getElementById('shuffleBtn');
+        const repeatBtn = document.getElementById('repeatBtn');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const volumeSlider = document.getElementById('volumeSlider');
@@ -249,14 +286,31 @@
         const statusIndicator = document.getElementById('statusIndicator');
         const playlistContainer = document.getElementById('playlistContainer');
         const audioUpload = document.getElementById('audioUpload');
+        const canvas = document.getElementById('visualizerCanvas');
+        const canvasCtx = canvas.getContext('2d');
+
+        // Saat lagu selesai diputar
+        audioElement.addEventListener('ended', () => {
+            if (isRepeat) {
+                audioElement.currentTime = 0;
+                audioElement.play().catch(err => console.log(err));
+            } else {
+                playNextTrack();
+            }
+        });
 
         function renderPlaylist() {
             try {
                 playlistContainer.innerHTML = '';
-                if (!Array.isArray(tracks)) {
-                    tracks = [];
-                }
+                if (!Array.isArray(tracks)) tracks = [];
+
                 tracks.forEach((track, index) => {
+                    const isLocal = track.source === 'local';
+                    const badgeText = isLocal ? 'HP / LOCAL' : (track.type === 'file' ? 'SUNO' : 'SYNTH');
+                    const badgeClass = isLocal
+                        ? 'bg-amber-600/30 text-amber-200 border-amber-400/50'
+                        : 'bg-neutral-800 text-amber-300/80 border-amber-500/20';
+
                     const item = document.createElement('div');
                     item.className = `flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition border ${index === currentTrackIndex ? 'bg-amber-950/60 border-amber-500/80 text-amber-200 shadow-md' : 'bg-neutral-900/60 border-neutral-800 text-gray-300 hover:bg-neutral-800'}`;
                     item.innerHTML = `
@@ -267,7 +321,7 @@
                                 <p class="text-[10px] text-amber-500/70 truncate">${track.artist || 'Custom Audio'}</p>
                             </div>
                         </div>
-                        <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-neutral-800 text-amber-300/80 border border-amber-500/20">${track.type || 'MP3'}</span>
+                        <span class="text-[9px] uppercase tracking-wider px-2 py-0.5 rounded border shrink-0 ${badgeClass}">${badgeText}</span>
                     `;
                     item.addEventListener('click', () => {
                         currentTrackIndex = index;
@@ -309,18 +363,13 @@
                     labelTitle.classList.remove('hidden');
                 }
                 
-                if (audioElement) {
-                    audioElement.pause();
-                    audioElement = null;
-                }
+                audioElement.pause();
+                audioElement.currentTime = 0;
 
                 if (track.type === 'file' && track.url) {
-                    audioElement = new Audio(track.url);
-                    audioElement.loop = false;
+                    audioElement.src = track.url;
                     audioElement.volume = parseFloat(volumeSlider.value);
-                    audioElement.addEventListener('ended', () => {
-                        nextBtn.click();
-                    });
+                    audioElement.load();
                 }
 
                 renderPlaylist();
@@ -333,6 +382,13 @@
             try {
                 if (!audioCtx) {
                     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    analyser = audioCtx.createAnalyser();
+                    analyser.fftSize = 64;
+                    analyser.smoothingTimeConstant = 0.8;
+
+                    sourceNode = audioCtx.createMediaElementSource(audioElement);
+                    sourceNode.connect(analyser);
+                    analyser.connect(audioCtx.destination);
                 }
                 if (audioCtx.state === 'suspended') {
                     audioCtx.resume();
@@ -340,6 +396,93 @@
             } catch (error) {
                 console.error("Web Audio API error:", error);
             }
+        }
+
+        // Generator Suara Kresek-kresek Vinyl (Web Audio API)
+        function startVinylCrackle() {
+            if (!isCrackleOn || !isPlaying) return;
+            initAudioContext();
+            if (!audioCtx || crackleSource) return;
+
+            const bufferSize = audioCtx.sampleRate * 3;
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+
+            for (let i = 0; i < bufferSize; i++) {
+                // Hiss lembut + letupan acak khas piringan hitam
+                let sample = (Math.random() * 2 - 1) * 0.015;
+                if (Math.random() < 0.0007) {
+                    sample += (Math.random() * 2 - 1) * 0.45;
+                }
+                data[i] = sample;
+            }
+
+            crackleSource = audioCtx.createBufferSource();
+            crackleSource.buffer = buffer;
+            crackleSource.loop = true;
+
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.value = 2800;
+            filter.Q.value = 0.7;
+
+            crackleGain = audioCtx.createGain();
+            crackleGain.gain.value = parseFloat(volumeSlider.value) * 0.35;
+
+            crackleSource.connect(filter);
+            filter.connect(crackleGain);
+            crackleGain.connect(audioCtx.destination);
+            crackleSource.start();
+        }
+
+        function stopVinylCrackle() {
+            if (crackleSource) {
+                try { crackleSource.stop(); } catch (e) {}
+                crackleSource.disconnect();
+                crackleSource = null;
+            }
+        }
+
+        // Visualizer Equalizer Warna Emas
+        function drawVisualizer() {
+            const width = canvas.width = canvas.clientWidth;
+            const height = canvas.height = canvas.clientHeight;
+            canvasCtx.clearRect(0, 0, width, height);
+
+            if (!isPlaying) return;
+
+            const barCount = 28;
+            const gap = 3;
+            const barWidth = (width - gap * (barCount - 1)) / barCount;
+            let dataArray = new Uint8Array(barCount);
+
+            if (analyser) {
+                analyser.getByteFrequencyData(dataArray);
+            }
+
+            const grad = canvasCtx.createLinearGradient(0, height, 0, 0);
+            grad.addColorStop(0, '#92400e');
+            grad.addColorStop(0.5, '#eab308');
+            grad.addColorStop(1, '#fef08a');
+            canvasCtx.fillStyle = grad;
+
+            for (let i = 0; i < barCount; i++) {
+                const value = dataArray[i] || 0;
+                const barHeight = Math.max(3, (value / 255) * height);
+                const x = i * (barWidth + gap);
+                const y = height - barHeight;
+                canvasCtx.fillRect(x, y, barWidth, barHeight);
+            }
+
+            animFrameId = requestAnimationFrame(drawVisualizer);
+        }
+
+        function stopVisualizer() {
+            if (animFrameId) {
+                cancelAnimationFrame(animFrameId);
+                animFrameId = null;
+            }
+            canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
         }
 
         function playSynthMelody() {
@@ -350,60 +493,33 @@
 
             synthLoop = setInterval(() => {
                 if (!isPlaying) return;
-                try {
-                    const noteData = track.melody[noteIndex % track.melody.length];
-                    if (noteData && noteData.note) {
-                        playTone(noteData.note, 0.6);
-                    }
-                    noteIndex++;
-                } catch (e) {
-                    console.error(e);
-                }
+                const noteData = track.melody[noteIndex % track.melody.length];
+                if (noteData && noteData.note) playTone(noteData.note, 0.6);
+                noteIndex++;
             }, 750);
         }
 
         function playTone(noteName, duration) {
             if (!audioCtx) return;
-            const freq = noteToFreq(noteName);
-            if (!freq) return;
-
             const osc = audioCtx.createOscillator();
             const gain = audioCtx.createGain();
-
             osc.type = 'triangle';
-            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-            const filter = audioCtx.createBiquadFilter();
-            filter.type = 'lowpass';
-            filter.frequency.setValueAtTime(1200, audioCtx.currentTime);
-
-            const vol = parseFloat(volumeSlider.value);
-            gain.gain.setValueAtTime(vol * 0.4, audioCtx.currentTime);
+            osc.frequency.setValueAtTime(261.63, audioCtx.currentTime);
+            gain.gain.setValueAtTime(parseFloat(volumeSlider.value) * 0.3, audioCtx.currentTime);
             gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-
-            osc.connect(filter);
-            filter.connect(gain);
+            osc.connect(gain);
             gain.connect(audioCtx.destination);
-
             osc.start();
             osc.stop(audioCtx.currentTime + duration);
         }
 
-        function noteToFreq(note) {
-            const notes = {
-                'C3': 130.81, 'D3': 146.83, 'E3': 164.81, 'F3': 174.61, 'G3': 196.00, 'A3': 220.00, 'B3': 246.94,
-                'C4': 261.63, 'D4': 293.66, 'Eb4': 311.13, 'E4': 329.63, 'F4': 349.23, 'F#4': 369.99, 'G4': 392.00,
-                'Ab4': 415.30, 'A4': 440.00, 'Bb4': 466.16, 'B4': 493.88, 'C5': 523.25
-            };
-            return notes[note] || 261.63;
-        }
-
         function playAudio() {
             if (!isPoweredOn || tracks.length === 0) return;
+            initAudioContext();
             isPlaying = true;
 
             playIcon.className = "fa-solid fa-pause ml-0";
-            statusIndicator.className = "w-3.5 h-3.5 rounded-full bg-emerald-500 shadow-md animate-pulse border border-emerald-900";
+            statusIndicator.className = "w-3.5 h-3.5 shrink-0 rounded-full bg-emerald-500 shadow-md animate-pulse border border-emerald-900";
             displayStatus.textContent = "Playing Luxury Audio...";
 
             vinylRecord.classList.add('vinyl-spinning');
@@ -413,23 +529,25 @@
             toneArm.classList.add('tone-arm-playing');
 
             const track = tracks[currentTrackIndex];
-            if (track && track.type === 'file' && audioElement) {
+            if (track && track.type === 'file' && track.url) {
                 audioElement.volume = parseFloat(volumeSlider.value);
                 audioElement.play().catch(err => console.log(err));
             } else {
                 playSynthMelody();
             }
+
+            if (isCrackleOn) startVinylCrackle();
+            drawVisualizer();
         }
 
         function stopAudio() {
             isPlaying = false;
 
             playIcon.className = "fa-solid fa-play ml-0.5";
-            statusIndicator.className = "w-3.5 h-3.5 rounded-full bg-red-600 shadow-md animate-pulse border border-red-900";
+            statusIndicator.className = "w-3.5 h-3.5 shrink-0 rounded-full bg-red-600 shadow-md animate-pulse border border-red-900";
             displayStatus.textContent = "Paused / Standby";
 
             vinylRecord.classList.remove('vinyl-spinning');
-
             toneArm.classList.remove('tone-arm-playing');
             toneArm.classList.add('tone-arm-rest');
 
@@ -438,23 +556,37 @@
                 synthLoop = null;
             }
 
-            if (audioElement) {
-                audioElement.pause();
-            }
+            audioElement.pause();
+            stopVinylCrackle();
+            stopVisualizer();
         }
 
         function updateSpinSpeed() {
-            const duration = currentSpeed === 33 ? '1.8s' : '1.3s';
-            vinylRecord.style.animationDuration = duration;
+            vinylRecord.style.animationDuration = currentSpeed === 33 ? '1.8s' : '1.3s';
         }
 
-        playPauseBtn.addEventListener('click', () => {
-            if (!isPoweredOn) return;
+        function playNextTrack() {
+            if (tracks.length === 0) return;
+            if (isShuffle && tracks.length > 1) {
+                let nextIdx;
+                do {
+                    nextIdx = Math.floor(Math.random() * tracks.length);
+                } while (nextIdx === currentTrackIndex);
+                currentTrackIndex = nextIdx;
+            } else {
+                currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+            }
+            loadTrack(currentTrackIndex);
             if (isPlaying) {
                 stopAudio();
-            } else {
                 playAudio();
             }
+        }
+
+        // Event Listeners
+        playPauseBtn.addEventListener('click', () => {
+            if (!isPoweredOn) return;
+            isPlaying ? stopAudio() : playAudio();
         });
 
         powerBtn.addEventListener('click', () => {
@@ -464,32 +596,51 @@
                 powerBtn.classList.remove('text-amber-400');
                 powerBtn.classList.add('text-gray-500');
                 displayStatus.textContent = "Powered Off";
-                statusIndicator.className = "w-3.5 h-3.5 rounded-full bg-neutral-700 shadow-md border border-neutral-900";
+                statusIndicator.className = "w-3.5 h-3.5 shrink-0 rounded-full bg-neutral-700 shadow-md border border-neutral-900";
             } else {
                 powerBtn.classList.remove('text-gray-500');
                 powerBtn.classList.add('text-amber-400');
                 displayStatus.textContent = "System Ready";
-                statusIndicator.className = "w-3.5 h-3.5 rounded-full bg-red-600 shadow-md animate-pulse border border-red-900";
+                statusIndicator.className = "w-3.5 h-3.5 shrink-0 rounded-full bg-red-600 shadow-md animate-pulse border border-red-900";
             }
         });
 
         speedBtn.addEventListener('click', () => {
             currentSpeed = currentSpeed === 33 ? 45 : 33;
             speedBtn.textContent = `${currentSpeed} RPM`;
-            if (isPlaying) {
-                updateSpinSpeed();
+            if (isPlaying) updateSpinSpeed();
+        });
+
+        crackleBtn.addEventListener('click', () => {
+            isCrackleOn = !isCrackleOn;
+            if (isCrackleOn) {
+                crackleBtn.textContent = "ON";
+                crackleBtn.className = "text-[10px] font-bold px-2 py-1 rounded-lg bg-amber-600 text-white border border-amber-300 shadow-md transition";
+                if (isPlaying) startVinylCrackle();
+            } else {
+                crackleBtn.textContent = "OFF";
+                crackleBtn.className = "text-[10px] font-bold px-2 py-1 rounded-lg bg-neutral-900 text-gray-400 border border-amber-500/30 shadow-inner hover:bg-amber-900 transition";
+                stopVinylCrackle();
             }
         });
 
-        nextBtn.addEventListener('click', () => {
-            if (tracks.length === 0) return;
-            currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
-            loadTrack(currentTrackIndex);
-            if (isPlaying) {
-                stopAudio();
-                playAudio();
-            }
+        shuffleBtn.addEventListener('click', () => {
+            isShuffle = !isShuffle;
+            shuffleBtn.classList.toggle('text-amber-300/50', !isShuffle);
+            shuffleBtn.classList.toggle('text-yellow-300', isShuffle);
+            shuffleBtn.classList.toggle('ring-2', isShuffle);
+            shuffleBtn.classList.toggle('ring-yellow-300', isShuffle);
         });
+
+        repeatBtn.addEventListener('click', () => {
+            isRepeat = !isRepeat;
+            repeatBtn.classList.toggle('text-amber-300/50', !isRepeat);
+            repeatBtn.classList.toggle('text-yellow-300', isRepeat);
+            repeatBtn.classList.toggle('ring-2', isRepeat);
+            repeatBtn.classList.toggle('ring-yellow-300', isRepeat);
+        });
+
+        nextBtn.addEventListener('click', playNextTrack);
 
         prevBtn.addEventListener('click', () => {
             if (tracks.length === 0) return;
@@ -503,32 +654,31 @@
 
         volumeSlider.addEventListener('input', (e) => {
             const vol = parseFloat(e.target.value);
-            if (audioElement) {
-                audioElement.volume = vol;
-            }
+            audioElement.volume = vol;
+            if (crackleGain) crackleGain.gain.value = vol * 0.35;
         });
 
+        // Upload MP3 dari HP -> Posisi Paling Atas
         audioUpload.addEventListener('change', (e) => {
             try {
                 const files = e.target.files;
                 if (!files || files.length === 0) return;
 
-                let firstNewIndex = tracks.length;
+                const newLocalTracks = Array.from(files).map((file) => ({
+                    title: file.name.replace(/\.[^/.]+$/, ""),
+                    artist: "HP / Local File",
+                    type: "file",
+                    source: "local",
+                    url: URL.createObjectURL(file),
+                    cover: ""
+                }));
 
-                Array.from(files).forEach((file) => {
-                    const fileURL = URL.createObjectURL(file);
-                    const fileName = file.name.replace(/\.[^/.]+$/, "");
-                    tracks.push({
-                        title: fileName,
-                        artist: "fatur62 File",
-                        type: "file",
-                        url: fileURL,
-                        cover: ""
-                    });
-                });
+                // Masukkan ke paling atas playlist
+                tracks.unshift(...newLocalTracks);
 
-                currentTrackIndex = firstNewIndex;
-                loadTrack(currentTrackIndex);
+                currentTrackIndex = 0;
+                loadTrack(0);
+                playlistContainer.scrollTop = 0;
 
                 if (isPlaying) {
                     stopAudio();
@@ -539,6 +689,7 @@
             }
         });
 
+        // Muat Lagu Suno dari GitHub
         async function loadTracksFromGitHub() {
             const branches = ["main", "master"];
             let lastError = "";
@@ -562,7 +713,7 @@
                         throw new Error("Daftar lagu di songs.json kosong");
                     }
 
-                    tracks = list.map((item, idx) => {
+                    const githubTracks = list.map((item, idx) => {
                         let rawUrl = item.url || item.audio || item.audio_url || item.src || "";
                         if (rawUrl && !rawUrl.startsWith("http")) {
                             rawUrl = baseRawUrl + encodeURI(rawUrl.replace(/^\/+/, ""));
@@ -577,14 +728,19 @@
                             title: item.title || item.judul || `Track ${idx + 1}`,
                             artist: item.artist || item.artis || "fatur62",
                             type: "file",
+                            source: "github",
                             url: rawUrl,
                             cover: rawCover
                         };
                     }).filter(t => t.url);
 
-                    if (tracks.length === 0) {
+                    if (githubTracks.length === 0) {
                         throw new Error("Format URL audio di songs.json tidak terbaca");
                     }
+
+                    // Pertahankan lagu lokal di paling atas jika user keburu upload duluan
+                    const existingLocal = tracks.filter(t => t.source === 'local');
+                    tracks = [...existingLocal, ...githubTracks];
 
                     currentTrackIndex = 0;
                     loadTrack(0);
