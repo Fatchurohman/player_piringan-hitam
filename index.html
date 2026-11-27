@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatur Luxury Vintage Turntable - fatur62</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;700;800&display=swap');
+
+        /* =========================================
+           THEME VARIABLES (Default: Audiophile Hi-Fi)
+           ========================================= */
+        :root,
+        body[data-theme="hifi"] {
+            --bg-page: radial-gradient(circle at 50% 10%, #111827 0%, #070a10 55%, #020305 100%);
+            --title-grad: linear-gradient(90deg, #e2e8f0 0%, #38bdf8 50%, #34d399 100%);
+            --subtitle-color: rgba(56, 189, 248, 0.8);
+            --accent-line: rgba(56, 189, 248, 0.55);
+
+            --card-bg: rgba(10, 14, 22, 0.85);
+            --card-border: rgba(148, 163, 184, 0.25);
+
+            --deck-bg: linear-gradient(145deg, #161b24 0%, #0b0e14 50%, #05070a 100%);
+            --deck-border: #334155;
+            --deck-outline: rgba(56, 189, 248, 0.3);
+            --deck-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.95), 0 0 45px rgba(14, 165, 233, 0.14), inset 0 1px 2px rgba(255, 255, 255, 0.2), inset 0 -8px 20px rgba(0, 0, 0, 0.9);
+            --corner-color: rgba(148, 163, 184, 0.65);
+
+            --sync-bg: linear-gradient(145deg, #0f172a 0%, #060911 100%);
+            --sync-border: rgba(56, 189, 248, 0.45);
+            --sync-text: #e0f2fe;
+            --sync-sub: rgba(56, 189, 248, 0.85);
+
+            --platter-rim: linear-gradient(135deg, #475569 0%, #f8fafc 45%, #94a3b8 70%, #1e293b 100%);
+            --platter-border: #0f172a;
+            --platter-glow: 0 20px 50px rgba(0,0,0,0.9), 0 0 28px rgba(56, 189, 248, 0.22);
+
+            --panel-bg: linear-gradient(135deg, #1e293b 0%, #0f172a 55%, #020617 100%);
+            --panel-border: rgba(56, 189, 248, 0.45);
+            --panel-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25), 0 12px 28px rgba(0, 0, 0, 0.75);
+            --panel-title: #f8fafc;
+            --panel-status: #38bdf8;
+            --panel-icon: #cbd5e1;
+
+            --play-bg: linear-gradient(135deg, #0284c7 0%, #06b6d4 50%, #10b981 100%);
+            --play-border: #e0f2fe;
+            --ctrl-icon: #38bdf8;
+            --ctrl-border: rgba(56, 189, 248, 0.5);
+
+            --btn-upload-bg: linear-gradient(90deg, #0284c7, #0d9488);
+            --btn-upload-text: #ffffff;
+            --scroll-thumb: linear-gradient(to bottom, #0284c7, #34d399);
+            --footer-color: rgba(148, 163, 184, 0.65);
+
+            --arm-stop-1: #f8fafc;
+            --arm-stop-2: #94a3b8;
+            --arm-stop-3: #334155;
+        }
+
+        /* Tema 2: Royal Gold (Mahoni & Emas) */
+        body[data-theme="gold"] {
+            --bg-page: radial-gradient(circle at 50% 15%, #231914 0%, #0e0a08 55%, #050403 100%);
+            --title-grad: linear-gradient(90deg, #fef3c7 0%, #facc15 50%, #d97706 100%);
+            --subtitle-color: rgba(251, 191, 36, 0.8);
+            --accent-line: rgba(245, 158, 11, 0.65);
+
+            --card-bg: rgba(12, 10, 9, 0.85);
+            --card-border: rgba(245, 158, 11, 0.28);
+
+            --deck-bg: repeating-linear-gradient(90deg, rgba(255,215,130,0.015) 0px, rgba(255,215,130,0.015) 2px, transparent 2px, transparent 9px), radial-gradient(circle at 50% 35%, #3d2112 0%, #241209 55%, #120804 100%);
+            --deck-border: #5c3317;
+            --deck-outline: rgba(251, 191, 36, 0.28);
+            --deck-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.95), 0 0 40px rgba(202, 138, 4, 0.1), inset 0 2px 4px rgba(254, 240, 138, 0.2), inset 0 -8px 20px rgba(0, 0, 0, 0.85);
+            --corner-color: rgba(251, 191, 36, 0.65);
+
+            --sync-bg: linear-gradient(145deg, #2b1408 0%, #170a04 100%);
+            --sync-border: rgba(217, 119, 6, 0.55);
+            --sync-text: #fde68a;
+            --sync-sub: rgba(252, 211, 77, 0.8);
+
+            --platter-rim: linear-gradient(135deg, #92400e 0%, #fef08a 45%, #ca8a04 75%, #78350f 100%);
+            --platter-border: #451a03;
+            --platter-glow: 0 20px 50px rgba(0,0,0,0.9), 0 0 25px rgba(234, 179, 8, 0.2);
+
+            --panel-bg: linear-gradient(135deg, #fef08a 0%, #eab308 28%, #ca8a04 62%, #a16207 100%);
+            --panel-border: rgba(254, 249, 195, 0.65);
+            --panel-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.85), inset 0 -2px 6px rgba(69, 26, 3, 0.45), 0 12px 28px rgba(0, 0, 0, 0.65);
+            --panel-title: #0a0a0a;
+            --panel-status: #451a03;
+            --panel-icon: #0a0a0a;
+
+            --play-bg: linear-gradient(135deg, #78350f 0%, #d97706 50%, #facc15 100%);
+            --play-border: #fef9c3;
+            --ctrl-icon: #fcd34d;
+            --ctrl-border: rgba(251, 191, 36, 0.65);
+
+            --btn-upload-bg: linear-gradient(90deg, #b45309, #eab308);
+            --btn-upload-text: #0a0a0a;
+            --scroll-thumb: linear-gradient(to bottom, #b45309, #eab308);
+            --footer-color: rgba(245, 158, 11, 0.6);
+
+            --arm-stop-1: #fef9c3;
+            --arm-stop-2: #ca8a04;
+            --arm-stop-3: #78350f;
+        }
+
+        /* Tema 3: Dynamic Glassmorphism (Modern Mewah) */
+        body[data-theme="glass"] {
+            --bg-page: radial-gradient(circle at 20% 20%, #1e1b4b 0%, #09090b 55%, #020617 100%);
+            --title-grad: linear-gradient(90deg, #ffffff 0%, #c084fc 50%, #38bdf8 100%);
+            --subtitle-color: rgba(216, 180, 254, 0.85);
+            --accent-line: rgba(192, 132, 252, 0.6);
+
+            --card-bg: rgba(255, 255, 255, 0.06);
+            --card-border: rgba(255, 255, 255, 0.16);
+
+            --deck-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(15, 23, 42, 0.55) 100%);
+            --deck-border: rgba(255, 255, 255, 0.22);
+            --deck-outline: rgba(192, 132, 252, 0.25);
+            --deck-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+            --corner-color: rgba(255, 255, 255, 0.45);
+
+            --sync-bg: rgba(15, 23, 42, 0.55);
+            --sync-border: rgba(255, 255, 255, 0.2);
+            --sync-text: #f8fafc;
+            --sync-sub: rgba(216, 180, 254, 0.9);
+
+            --platter-rim: linear-gradient(135deg, #c084fc 0%, #f8fafc 45%, #38bdf8 85%, #4f46e5 100%);
+            --platter-border: rgba(255, 255, 255, 0.3);
+            --platter-glow: 0 20px 50px rgba(0,0,0,0.85), 0 0 32px rgba(192, 132, 252, 0.28);
+
+            --panel-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(15, 23, 42, 0.68) 100%);
+            --panel-border: rgba(255, 255, 255, 0.25);
+            --panel-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.35), 0 14px 32px rgba(0, 0, 0, 0.65);
+            --panel-title: #ffffff;
+            --panel-status: #e9d5ff;
+            --panel-icon: #f8fafc;
+
+            --play-bg: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #38bdf8 100%);
+            --play-border: #ffffff;
+            --ctrl-icon: #e9d5ff;
+            --ctrl-border: rgba(255, 255, 255, 0.35);
+
+            --btn-upload-bg: linear-gradient(90deg, #7c3aed, #0ea5e9);
+            --btn-upload-text: #ffffff;
+            --scroll-thumb: linear-gradient(to bottom, #a855f7, #38bdf8);
+            --footer-color: rgba(226, 232, 240, 0.6);
+
+            --arm-stop-1: #ffffff;
+            --arm-stop-2: #cbd5e1;
+            --arm-stop-3: #64748b;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-page);
+            transition: background 0.5s ease;
+        }
+
+        .font-luxury {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Dynamic Backdrop (Aktif khusus tema Glass) */
+        #dynamicBackdrop {
+            position: fixed;
+            inset: -40px;
+            background-size: cover;
+            background-position: center;
+            filter: blur(55px) saturate(1.45) brightness(0.45);
+            opacity: 0;
+            transition: opacity 0.6s ease, background-image 0.6s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+        body[data-theme="glass"] #dynamicBackdrop.has-cover {
+            opacity: 0.9;
+        }
+
+        .theme-title {
+            background: var(--title-grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .theme-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .wooden-base {
+            background: var(--deck-bg);
+            border: 3px solid var(--deck-border);
+            outline: 1px solid var(--deck-outline);
+            box-shadow: var(--deck-shadow);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.45s ease;
+        }
+
+        .corner-accent {
+            border-color: var(--corner-color);
+        }
+
+        .sync-panel {
+            font-family: 'Cinzel', serif;
+            background: var(--sync-bg);
+            color: var(--sync-text);
+            border: 1px solid var(--sync-border);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+        }
+
+        .platter-outer {
+            background: var(--platter-rim);
+            border: 3px solid var(--platter-border);
+            box-shadow: var(--platter-glow);
+            transition: all 0.45s ease;
+        }
+
+        .gold-panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            box-shadow: var(--panel-shadow);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: all 0.45s ease;
+        }
+
+        .play-btn-theme {
+            background: var(--play-bg);
+            border: 2px solid var(--play-border);
+        }
+
+        .ctrl-btn-theme {
+            color: var(--ctrl-icon);
+            border-color: var(--ctrl-border);
+        }
+
+        .upload-btn-theme {
+            background: var(--btn-upload-bg);
+            color: var(--btn-upload-text);
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .vinyl-spinning {
+            animation: spin 1.8s linear infinite;
+        }
+
+        .vinyl-sheen {
+            background: conic-gradient(
+                from 45deg,
+                transparent 0deg,
+                rgba(255, 255, 255, 0.14) 25deg,
+                transparent 55deg,
+                transparent 180deg,
+                rgba(255, 255, 255, 0.1) 205deg,
+                transparent 235deg
+            );
+        }
+
+        .tone-arm-container {
+            transform-origin: 215px 45px;
+            transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .tone-arm-rest { transform: rotate(38deg); }
+        .tone-arm-playing { transform: rotate(22deg); }
+
+        /* Custom Slider Volume */
+        input[type=range].luxury-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(15, 23, 42, 0.75);
+            height: 6px;
+            border-radius: 999px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8);
+        }
+        input[type=range].luxury-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #f8fafc;
+            border: 2px solid #0f172a;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+        }
+        input[type=range].luxury-slider::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #f8fafc;
+            border: 2px solid #0f172a;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+        }
+
+        /* Scrollbar Playlist */
+        .custom-scroll::-webkit-scrollbar { width: 5px; }
+        .custom-scroll::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.25); border-radius: 999px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 999px; }
+
+        /* Theme Switcher Pill */
+        .theme-pill {
+            transition: all 0.25s ease;
+        }
+        .theme-pill.active {
+            background: rgba(255, 255, 255, 0.16);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.45);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body data-theme="hifi" class="min-h-screen text-gray-100 flex flex-col items-center justify-between p-4 md:p-8 relative overflow-x-hidden">
+
+    <!-- Dynamic Cover Backdrop untuk Tema Glass -->
+    <div id="dynamicBackdrop"></div>
+
+    <header class="text-center mb-3 relative z-20 w-full max-w-[660px]">
+        <h1 class="font-luxury theme-title text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-[0.18em] drop-shadow-lg">
+            FATUR LUXURY TURNTABLE
+        </h1>
+        <div class="flex items-center justify-center gap-2 mt-1.5">
+            <span class="h-[1px] w-8" style="background: linear-gradient(to right, transparent, var(--accent-line));"></span>
+            <p class="text-[9px] md:text-[11px] uppercase tracking-[0.32em] font-semibold" style="color: var(--subtitle-color);">High-End Analog Masterpiece</p>
+            <span class="h-[1px] w-8" style="background: linear-gradient(to left, transparent, var(--accent-line));"></span>
+        </div>
+
+        <!-- Theme Switcher Bar -->
+        <div class="inline-flex items-center gap-1.5 mt-3 p-1 rounded-full bg-black/50 border border-white/15 backdrop-blur-md shadow-lg">
+            <button type="button" data-set-theme="hifi" class="theme-pill active text-[10px] font-bold px-3 py-1 rounded-full border border-transparent text-gray-300 hover:text-white flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_6px_#22d3ee]"></span> Hi-Fi
+            </button>
+            <button type="button" data-set-theme="gold" class="theme-pill text-[10px] font-bold px-3 py-1 rounded-full border border-transparent text-gray-300 hover:text-white flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_6px_#fbbf24]"></span> Royal Gold
+            </button>
+            <button type="button" data-set-theme="glass" class="theme-pill text-[10px] font-bold px-3 py-1 rounded-full border border-transparent text-gray-300 hover:text-white flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_6px_#c084fc]"></span> Glass
+            </button>
+        </div>
+    </header>
+
+    <main class="w-full max-w-4xl flex flex-col items-center justify-center space-y-4 relative z-20">
+        
+        <!-- Playlist & Upload -->
+        <div class="theme-card w-full max-w-[660px] rounded-2xl p-4 shadow-[0_15px_35px_rgba(0,0,0,0.65)] z-30">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="font-luxury text-xs sm:text-sm font-bold text-gray-100 uppercase tracking-wider flex items-center gap-2">
+                    <i class="fa-solid fa-compact-disc" style="color: var(--ctrl-icon);"></i> Playlist & Audio Manager
+                </h3>
+                <label class="upload-btn-theme cursor-pointer text-xs font-extrabold px-3.5 py-2 rounded-xl shadow-lg transition active:scale-95 flex items-center gap-1.5 border border-white/25 hover:brightness-110">
+                    <i class="fa-solid fa-folder-open"></i> Buka MP3
+                    <input type="file" id="audioUpload" accept="audio/*" multiple class="hidden">
+                </label>
+            </div>
+
+            <div id="playlistContainer" class="custom-scroll space-y-2 max-h-40 overflow-y-auto pr-1"></div>
+        </div>
+
+        <!-- Turntable Body -->
+        <div class="wooden-base relative w-full max-w-[660px] min-h-[540px] rounded-3xl p-5 md:p-8 flex flex-col justify-between overflow-hidden">
+            
+            <!-- Ornamen Sudut -->
+            <div class="corner-accent absolute top-3 left-3 w-7 h-7 border-t-2 border-l-2 rounded-tl-xl pointer-events-none"></div>
+            <div class="corner-accent absolute top-3 right-3 w-7 h-7 border-t-2 border-r-2 rounded-tr-xl pointer-events-none"></div>
+            <div class="corner-accent absolute bottom-3 left-3 w-7 h-7 border-b-2 border-l-2 rounded-bl-xl pointer-events-none"></div>
+            <div class="corner-accent absolute bottom-3 right-3 w-7 h-7 border-b-2 border-r-2 rounded-br-xl pointer-events-none"></div>
+
+            <!-- Top Controls -->
+            <div class="flex flex-wrap items-center justify-between gap-2.5 w-full z-30">
+                <div class="sync-panel px-3.5 py-2 rounded-2xl flex items-center space-x-3.5">
+                    <div class="flex flex-col items-center">
+                        <span class="text-[8px] font-bold uppercase tracking-widest mb-1" style="color: var(--sync-sub);">Power</span>
+                        <button id="powerBtn" class="w-8 h-8 rounded-full bg-gradient-to-tr from-neutral-950 to-neutral-800 border border-white/25 shadow-md flex items-center justify-center text-xs hover:scale-105 active:scale-95 transition" style="color: var(--ctrl-icon);">
+                            <i class="fa-solid fa-power-off"></i>
+                        </button>
+                    </div>
+                    <div class="h-7 w-[1px] bg-white/15"></div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-[8px] font-bold uppercase tracking-widest mb-1" style="color: var(--sync-sub);">Speed</span>
+                        <button id="speedBtn" class="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-black/50 border border-white/20 shadow-inner hover:bg-white/10 active:scale-95 transition" style="color: var(--sync-text);">
+                            33 RPM
+                        </button>
+                    </div>
+                    <div class="h-7 w-[1px] bg-white/15"></div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-[8px] font-bold uppercase tracking-widest mb-1" style="color: var(--sync-sub);">Vinyl FX</span>
+                        <button id="crackleBtn" title="Efek Kresek-kresek Vinyl" class="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-black/50 text-gray-400 border border-white/15 shadow-inner hover:bg-white/10 active:scale-95 transition">
+                            OFF
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sync-panel px-4 py-2 rounded-2xl text-center flex flex-col items-center justify-center">
+                    <span class="text-[8px] uppercase tracking-[0.22em] font-bold" style="color: var(--sync-sub);">Created By</span>
+                    <span class="text-xs md:text-sm font-extrabold tracking-wider mt-0.5" style="color: var(--sync-text);">developer : "fatur62"</span>
+                </div>
+            </div>
+
+            <!-- Vinyl Platter & Tone Arm -->
+            <div class="relative w-[250px] h-[250px] md:w-[305px] md:h-[305px] mx-auto my-4 flex items-center justify-center z-10">
+                <!-- Cincin Luar Platter -->
+                <div class="platter-outer absolute inset-0 rounded-full flex items-center justify-center p-1.5">
+                    
+                    <!-- Piringan Hitam yang Berputar -->
+                    <div id="vinylRecord" class="relative w-full h-full rounded-full bg-gradient-to-tr from-black via-neutral-900 to-neutral-950 shadow-2xl flex items-center justify-center border border-neutral-800">
+                        <!-- Alur Vinyl -->
+                        <div class="absolute inset-2.5 rounded-full border border-white/10 pointer-events-none"></div>
+                        <div class="absolute inset-5 rounded-full border border-neutral-800/90 pointer-events-none"></div>
+                        <div class="absolute inset-8 rounded-full border border-white/10 pointer-events-none"></div>
+                        <div class="absolute inset-11 rounded-full border border-neutral-800/90 pointer-events-none"></div>
+                        <div class="absolute inset-14 rounded-full border border-white/10 pointer-events-none"></div>
+                        <div class="absolute inset-[68px] rounded-full border border-neutral-800/90 pointer-events-none"></div>
+
+                        <!-- Label Tengah -->
+                        <div id="recordLabel" class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-tr from-slate-800 via-cyan-600 to-slate-900 border-4 border-neutral-950 shadow-[inset_0_0_12px_rgba(0,0,0,0.6)] flex flex-col items-center justify-center text-center p-2 relative overflow-hidden pointer-events-none">
+                            <div id="labelOverlay" class="absolute inset-0 bg-black/20"></div>
+                            <span id="labelArtist" class="text-[8px] md:text-[9px] font-bold text-white/90 uppercase tracking-widest z-10 truncate w-full">Luxury Audio</span>
+                            <span id="labelTitle" class="text-[10px] md:text-[11px] font-extrabold text-white tracking-wide z-10 truncate w-full mt-0.5">Masterpiece</span>
+                            <div class="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-white to-neutral-500 border-2 border-neutral-800 z-10 mt-1 shadow-inner"></div>
+                        </div>
+                    </div>
+
+                    <!-- Pantulan Cahaya Statis di Atas Vinyl -->
+                    <div class="vinyl-sheen absolute inset-2 rounded-full pointer-events-none"></div>
+                </div>
+
+                <!-- Tone Arm -->
+                <div id="toneArm" class="tone-arm-container tone-arm-rest absolute -top-4 -right-4 w-40 h-56 pointer-events-none z-20">
+                    <svg viewBox="0 0 250 250" class="w-full h-full drop-shadow-[0_12px_16px_rgba(0,0,0,0.85)]">
+                        <circle cx="215" cy="45" r="24" fill="url(#armGrad)" stroke="#0f172a" stroke-width="2.5"/>
+                        <circle cx="215" cy="45" r="16" fill="#171412"/>
+                        <circle cx="215" cy="45" r="6" fill="url(#armGrad)"/>
+                        
+                        <rect x="195" y="30" width="8" height="15" rx="3" fill="#111" stroke="url(#armGrad)" stroke-width="0.8"/>
+                        <line x1="205" y1="55" x2="198" y2="65" stroke="url(#armGrad)" stroke-width="3" stroke-linecap="round"/>
+
+                        <rect x="210" y="10" width="12" height="22" rx="4" fill="#0c0a09" stroke="url(#armGrad)" stroke-width="1.5"/>
+                        <circle cx="216" cy="15" r="5" fill="url(#armGrad)"/>
+
+                        <path d="M 215 45 L 215 85 Q 215 130 140 160 L 95 175" fill="none" stroke="url(#armGrad)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 215 45 L 215 85 Q 215 130 140 160 L 95 175" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-1, -1)"/>
+
+                        <g transform="translate(90, 168) rotate(15)">
+                            <rect x="0" y="0" width="16" height="24" rx="3" fill="#171412" stroke="url(#armGrad)" stroke-width="1.2"/>
+                            <rect x="3" y="18" width="10" height="8" fill="url(#armGrad)" />
+                        </g>
+
+                        <defs>
+                            <linearGradient id="armGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop id="armStop1" offset="0%" stop-color="#f8fafc" />
+                                <stop id="armStop2" offset="50%" stop-color="#94a3b8" />
+                                <stop id="armStop3" offset="100%" stop-color="#334155" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Spectrum Visualizer -->
+            <div class="w-full h-11 mb-3 bg-black/75 border border-white/15 rounded-xl px-2.5 py-1.5 shadow-[inset_0_2px_10px_rgba(0,0,0,0.9)] z-30 flex items-center justify-center overflow-hidden">
+                <canvas id="visualizerCanvas" class="w-full h-full"></canvas>
+            </div>
+
+            <!-- Control Panel -->
+            <div class="gold-panel w-full py-3.5 px-4 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-3.5 z-30">
+                <!-- Baris Judul, Status & Tombol Share WA Lagu Aktif -->
+                <div class="flex items-center justify-between space-x-2.5 w-full md:w-auto md:flex-1 min-w-0">
+                    <div class="flex items-center space-x-2.5 min-w-0 flex-1">
+                        <div id="statusIndicator" class="w-3.5 h-3.5 shrink-0 rounded-full bg-red-600 shadow-md animate-pulse border border-red-900"></div>
+                        <div class="min-w-0 flex-1">
+                            <h4 id="displayTitle" class="text-xs font-extrabold tracking-wide truncate" style="color: var(--panel-title);">Menghubungkan GitHub...</h4>
+                            <p id="displayStatus" class="text-[10px] font-bold truncate" style="color: var(--panel-status);">System Standby</p>
+                        </div>
+                    </div>
+                    <button id="shareCurrentBtn" title="Share Lagu Ini ke WhatsApp" class="shrink-0 w-8 h-8 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-200/70 shadow-md flex items-center justify-center transition active:scale-95">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                    </button>
+                </div>
+
+                <!-- Baris Tombol Kontrol -->
+                <div class="flex items-center justify-center space-x-2.5">
+                    <button id="shuffleBtn" title="Shuffle (Acak)" class="ctrl-btn-theme w-8 h-8 rounded-full bg-neutral-950/90 hover:bg-neutral-800 border shadow-md flex items-center justify-center transition active:scale-95 opacity-60">
+                        <i class="fa-solid fa-shuffle text-[11px]"></i>
+                    </button>
+                    <button id="prevBtn" title="Previous Track" class="ctrl-btn-theme w-9 h-9 rounded-full bg-neutral-950 hover:bg-neutral-800 border shadow-lg flex items-center justify-center transition active:scale-95">
+                        <i class="fa-solid fa-backward-step text-xs"></i>
+                    </button>
+                    <button id="playPauseBtn" title="Play / Pause" class="play-btn-theme w-12 h-12 rounded-full text-white shadow-[0_6px_16px_rgba(0,0,0,0.55)] flex items-center justify-center text-base transition active:scale-95 hover:brightness-110">
+                        <i id="playIcon" class="fa-solid fa-play ml-0.5"></i>
+                    </button>
+                    <button id="nextBtn" title="Next Track" class="ctrl-btn-theme w-9 h-9 rounded-full bg-neutral-950 hover:bg-neutral-800 border shadow-lg flex items-center justify-center transition active:scale-95">
+                        <i class="fa-solid fa-forward-step text-xs"></i>
+                    </button>
+                    <button id="repeatBtn" title="Repeat 1 Lagu" class="ctrl-btn-theme w-8 h-8 rounded-full bg-neutral-950/90 hover:bg-neutral-800 border shadow-md flex items-center justify-center transition active:scale-95 opacity-60">
+                        <i class="fa-solid fa-repeat text-[11px]"></i>
+                    </button>
+                </div>
+
+                <!-- Baris Volume -->
+                <div class="flex items-center justify-center space-x-2 w-full md:w-auto pt-0.5 md:pt-0">
+                    <i class="fa-solid fa-volume-high text-xs" style="color: var(--panel-icon);"></i>
+                    <input id="volumeSlider" type="range" min="0" max="1" step="0.05" value="0.7" class="luxury-slider w-36 md:w-20 cursor-pointer">
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="mt-5 text-center text-[11px] font-medium tracking-wider relative z-20" style="color: var(--footer-color);">
+        <p>Luxury Analog Turntable • Designed & Engineered by fatur62</p>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Konfigurasi Repo GitHub
+        const GITHUB_USER = "Fatchurohman";
+        const GITHUB_REPO = "lagu-suno-kreasiku";
+        const JSON_PATH = "songs.json";
+
+        // Konfigurasi Warna Visualizer & Tone Arm per Tema
+        const THEME_CONFIG = {
+            hifi: {
+                viz: ['#0284c7', '#22d3ee', '#34d399'],
+                arm: ['#f8fafc', '#94a3b8', '#334155'],
+                activeItem: 'bg-gradient-to-r from-sky-950/85 to-slate-900 border-cyan-400/70 text-cyan-100 shadow-md',
+                activeNum: 'text-cyan-400',
+                subArtist: 'text-cyan-300/70'
+            },
+            gold: {
+                viz: ['#92400e', '#eab308', '#fef08a'],
+                arm: ['#fef9c3', '#ca8a04', '#78350f'],
+                activeItem: 'bg-gradient-to-r from-amber-950/80 to-neutral-900 border-amber-500/70 text-amber-200 shadow-md',
+                activeNum: 'text-amber-400',
+                subArtist: 'text-amber-500/70'
+            },
+            glass: {
+                viz: ['#7c3aed', '#c084fc', '#38bdf8'],
+                arm: ['#ffffff', '#cbd5e1', '#64748b'],
+                activeItem: 'bg-white/15 border-purple-400/70 text-white shadow-md',
+                activeNum: 'text-purple-300',
+                subArtist: 'text-purple-200/75'
+            }
+        };
+
+        let activeTheme = localStorage.getItem('fatur_turntable_theme') || 'hifi';
+
+        // Array global tracks
+        let tracks = [
+            {
+                title: "Memuat Repository...",
+                artist: "GitHub Connection",
+                type: "synth",
+                melody: [{ note: 'C4', dur: '4n' }]
+            }
+        ];
+
+        let currentTrackIndex = 0;
+        let isPlaying = false;
+        let isPoweredOn = true;
+        let currentSpeed = 33;
+        let isShuffle = false;
+        let isRepeat = false;
+        let isCrackleOn = false;
+
+        // Audio & Web Audio API
+        const audioElement = new Audio();
+        audioElement.crossOrigin = "anonymous";
+        let audioCtx = null;
+        let analyser = null;
+        let sourceNode = null;
+        let crackleSource = null;
+        let crackleGain = null;
+        let synthLoop = null;
+        let animFrameId = null;
+
+        // DOM Elements
+        const dynamicBackdrop = document.getElementById('dynamicBackdrop');
+        const vinylRecord = document.getElementById('vinylRecord');
+        const toneArm = document.getElementById('toneArm');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const playIcon = document.getElementById('playIcon');
+        const powerBtn = document.getElementById('powerBtn');
+        const speedBtn = document.getElementById('speedBtn');
+        const crackleBtn = document.getElementById('crackleBtn');
+        const shuffleBtn = document.getElementById('shuffleBtn');
+        const repeatBtn = document.getElementById('repeatBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const shareCurrentBtn = document.getElementById('shareCurrentBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const displayTitle = document.getElementById('displayTitle');
+        const displayStatus = document.getElementById('displayStatus');
+        const recordLabel = document.getElementById('recordLabel');
+        const labelOverlay = document.getElementById('labelOverlay');
+        const labelArtist = document.getElementById('labelArtist');
+        const labelTitle = document.getElementById('labelTitle');
+        const statusIndicator = document.getElementById('statusIndicator');
+        const playlistContainer = document.getElementById('playlistContainer');
+        const audioUpload = document.getElementById('audioUpload');
+        const canvas = document.getElementById('visualizerCanvas');
+        const canvasCtx = canvas.getContext('2d');
+        const armStop1 = document.getElementById('armStop1');
+        const armStop2 = document.getElementById('armStop2');
+        const armStop3 = document.getElementById('armStop3');
+
+        // Fungsi Ganti Tema
+        function applyTheme(themeName) {
+            if (!THEME_CONFIG[themeName]) themeName = 'hifi';
+            activeTheme = themeName;
+            document.body.setAttribute('data-theme', themeName);
+            localStorage.setItem('fatur_turntable_theme', themeName);
+
+            // Update tombol pill aktif
+            document.querySelectorAll('[data-set-theme]').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.setTheme === themeName);
+            });
+
+            // Update gradasi warna Tone Arm SVG
+            const armColors = THEME_CONFIG[themeName].arm;
+            armStop1.setAttribute('stop-color', armColors[0]);
+            armStop2.setAttribute('stop-color', armColors[1]);
+            armStop3.setAttribute('stop-color', armColors[2]);
+
+            // Render ulang playlist agar highlight mengikuti warna tema
+            renderPlaylist();
+        }
+
+        document.querySelectorAll('[data-set-theme]').forEach(btn => {
+            btn.addEventListener('click', () => applyTheme(btn.dataset.setTheme));
+        });
+
+        // Fungsi Share Lagu Langsung ke WhatsApp
+        function shareTrackToWA(track) {
+            if (!track) return;
+            const title = track.title || 'Untitled';
+            const artist = track.artist || 'fatur62';
+            const baseUrl = window.location.href.split('?')[0];
+            const shareUrl = track.source === 'local'
+                ? baseUrl
+                : `${baseUrl}?song=${encodeURIComponent(title)}`;
+
+            const message = `🎵 Dengerin lagu *"${title}"* — ${artist}\ndi Fatur Luxury Turntable (by fatur62):\n${shareUrl}`;
+            const waUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // Saat lagu selesai diputar
+        audioElement.addEventListener('ended', () => {
+            if (isRepeat) {
+                audioElement.currentTime = 0;
+                audioElement.play().catch(err => console.log(err));
+            } else {
+                playNextTrack();
+            }
+        });
+
+        function renderPlaylist() {
+            try {
+                playlistContainer.innerHTML = '';
+                if (!Array.isArray(tracks)) tracks = [];
+                const tCfg = THEME_CONFIG[activeTheme] || THEME_CONFIG.hifi;
+
+                tracks.forEach((track, index) => {
+                    const isLocal = track.source === 'local';
+                    const badgeText = isLocal ? 'HP / LOCAL' : (track.type === 'file' ? 'SUNO' : 'SYNTH');
+                    const badgeClass = isLocal
+                        ? 'bg-emerald-600/25 text-emerald-200 border-emerald-400/40'
+                        : 'bg-black/40 text-gray-300 border-white/15';
+
+                    const item = document.createElement('div');
+                    item.className = `flex items-center justify-between gap-2 p-2.5 rounded-xl cursor-pointer transition border ${index === currentTrackIndex ? tCfg.activeItem : 'bg-black/30 border-white/10 text-gray-300 hover:bg-white/10'}`;
+                    item.innerHTML = `
+                        <div class="flex items-center space-x-2.5 overflow-hidden min-w-0 flex-1">
+                            <span class="w-5 shrink-0 text-center text-xs font-bold ${tCfg.activeNum}">${index + 1}</span>
+                            <div class="truncate">
+                                <p class="text-xs font-bold truncate">${track.title || 'Untitled'}</p>
+                                <p class="text-[10px] truncate ${tCfg.subArtist}">${track.artist || 'Custom Audio'}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1.5 shrink-0">
+                            <span class="text-[9px] uppercase tracking-wider px-2 py-0.5 rounded border ${badgeClass}">${badgeText}</span>
+                            <button type="button" title="Share ke WhatsApp" class="share-wa-btn w-7 h-7 rounded-lg bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white border border-emerald-500/40 flex items-center justify-center transition active:scale-95">
+                                <i class="fa-brands fa-whatsapp text-sm"></i>
+                            </button>
+                        </div>
+                    `;
+
+                    const shareBtn = item.querySelector('.share-wa-btn');
+                    shareBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        shareTrackToWA(track);
+                    });
+
+                    item.addEventListener('click', () => {
+                        currentTrackIndex = index;
+                        loadTrack(currentTrackIndex);
+                        if (isPlaying) {
+                            stopAudio();
+                            playAudio();
+                        }
+                    });
+                    playlistContainer.appendChild(item);
+                });
+            } catch (error) {
+                console.error("Error rendering playlist:", error);
+            }
+        }
+
+        function loadTrack(index) {
+            try {
+                if (!Array.isArray(tracks) || tracks.length === 0) return;
+                const safeIndex = Math.max(0, Math.min(index, tracks.length - 1));
+                const track = tracks[safeIndex];
+                
+                labelTitle.textContent = track.title || 'Untitled';
+                labelArtist.textContent = track.artist || 'fatur62 Audio';
+                displayTitle.textContent = `${track.title || 'Untitled'} — ${track.artist || 'Custom Audio'}`;
+
+                if (track.cover) {
+                    recordLabel.style.backgroundImage = `url('${track.cover}')`;
+                    recordLabel.style.backgroundSize = 'cover';
+                    recordLabel.style.backgroundPosition = 'center';
+                    labelOverlay.classList.add('hidden');
+                    labelArtist.classList.add('hidden');
+                    labelTitle.classList.add('hidden');
+
+                    // Update Dynamic Backdrop untuk tema Glass
+                    dynamicBackdrop.style.backgroundImage = `url('${track.cover}')`;
+                    dynamicBackdrop.classList.add('has-cover');
+                } else {
+                    recordLabel.style.backgroundImage = '';
+                    labelOverlay.classList.remove('hidden');
+                    labelArtist.classList.remove('hidden');
+                    labelTitle.classList.remove('hidden');
+
+                    dynamicBackdrop.style.backgroundImage = '';
+                    dynamicBackdrop.classList.remove('has-cover');
+                }
+                
+                audioElement.pause();
+                audioElement.currentTime = 0;
+
+                if (track.type === 'file' && track.url) {
+                    audioElement.src = track.url;
+                    audioElement.volume = parseFloat(volumeSlider.value);
+                    audioElement.load();
+                }
+
+                renderPlaylist();
+            } catch (error) {
+                console.error("Error loading track:", error);
+            }
+        }
+
+        function initAudioContext() {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    analyser = audioCtx.createAnalyser();
+                    analyser.fftSize = 64;
+                    analyser.smoothingTimeConstant = 0.8;
+
+                    sourceNode = audioCtx.createMediaElementSource(audioElement);
+                    sourceNode.connect(analyser);
+                    analyser.connect(audioCtx.destination);
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+            } catch (error) {
+                console.error("Web Audio API error:", error);
+            }
+        }
+
+        // Generator Suara Kresek-kresek Vinyl (Web Audio API)
+        function startVinylCrackle() {
+            if (!isCrackleOn || !isPlaying) return;
+            initAudioContext();
+            if (!audioCtx || crackleSource) return;
+
+            const bufferSize = audioCtx.sampleRate * 3;
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+
+            for (let i = 0; i < bufferSize; i++) {
+                let sample = (Math.random() * 2 - 1) * 0.015;
+                if (Math.random() < 0.0007) {
+                    sample += (Math.random() * 2 - 1) * 0.45;
+                }
+                data[i] = sample;
+            }
+
+            crackleSource = audioCtx.createBufferSource();
+            crackleSource.buffer = buffer;
+            crackleSource.loop = true;
+
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.value = 2800;
+            filter.Q.value = 0.7;
+
+            crackleGain = audioCtx.createGain();
+            crackleGain.gain.value = parseFloat(volumeSlider.value) * 0.35;
+
+            crackleSource.connect(filter);
+            filter.connect(crackleGain);
+            crackleGain.connect(audioCtx.destination);
+            crackleSource.start();
+        }
+
+        function stopVinylCrackle() {
+            if (crackleSource) {
+                try { crackleSource.stop(); } catch (e) {}
+                crackleSource.disconnect();
+                crackleSource = null;
+            }
+        }
+
+        // Visualizer Adaptif Sesuai Tema
+        function drawVisualizer() {
+            const width = canvas.width = canvas.clientWidth;
+            const height = canvas.height = canvas.clientHeight;
+            canvasCtx.clearRect(0, 0, width, height);
+
+            if (!isPlaying) return;
+
+            const barCount = 28;
+            const gap = 3;
+            const barWidth = (width - gap * (barCount - 1)) / barCount;
+            let dataArray = new Uint8Array(barCount);
+
+            if (analyser) {
+                analyser.getByteFrequencyData(dataArray);
+            }
+
+            const vizColors = (THEME_CONFIG[activeTheme] || THEME_CONFIG.hifi).viz;
+            const grad = canvasCtx.createLinearGradient(0, height, 0, 0);
+            grad.addColorStop(0, vizColors[0]);
+            grad.addColorStop(0.5, vizColors[1]);
+            grad.addColorStop(1, vizColors[2]);
+            canvasCtx.fillStyle = grad;
+
+            for (let i = 0; i < barCount; i++) {
+                const value = dataArray[i] || 0;
+                const barHeight = Math.max(3, (value / 255) * height);
+                const x = i * (barWidth + gap);
+                const y = height - barHeight;
+                canvasCtx.fillRect(x, y, barWidth, barHeight);
+            }
+
+            animFrameId = requestAnimationFrame(drawVisualizer);
+        }
+
+        function stopVisualizer() {
+            if (animFrameId) {
+                cancelAnimationFrame(animFrameId);
+                animFrameId = null;
+            }
+            canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function playSynthMelody() {
+            initAudioContext();
+            const track = tracks[currentTrackIndex];
+            if (!track || !Array.isArray(track.melody)) return;
+            let noteIndex = 0;
+
+            synthLoop = setInterval(() => {
+                if (!isPlaying) return;
+                const noteData = track.melody[noteIndex % track.melody.length];
+                if (noteData && noteData.note) playTone(noteData.note, 0.6);
+                noteIndex++;
+            }, 750);
+        }
+
+        function playTone(noteName, duration) {
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(261.63, audioCtx.currentTime);
+            gain.gain.setValueAtTime(parseFloat(volumeSlider.value) * 0.3, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + duration);
+        }
+
+        function playAudio() {
+            if (!isPoweredOn || tracks.length === 0) return;
+            initAudioContext();
+            isPlaying = true;
+
+            playIcon.className = "fa-solid fa-pause ml-0";
+            statusIndicator.className = "w-3.5 h-3.5 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse border border-emerald-900";
+            displayStatus.textContent = "Playing Luxury Audio...";
+
+            vinylRecord.classList.add('vinyl-spinning');
+            updateSpinSpeed();
+
+            toneArm.classList.remove('tone-arm-rest');
+            toneArm.classList.add('tone-arm-playing');
+
+            const track = tracks[currentTrackIndex];
+            if (track && track.type === 'file' && track.url) {
+                audioElement.volume = parseFloat(volumeSlider.value);
+                audioElement.play().catch(err => console.log(err));
+            } else {
+                playSynthMelody();
+            }
+
+            if (isCrackleOn) startVinylCrackle();
+            drawVisualizer();
+        }
+
+        function stopAudio() {
+            isPlaying = false;
+
+            playIcon.className = "fa-solid fa-play ml-0.5";
+            statusIndicator.className = "w-3.5 h-3.5 shrink-0 rounded-full bg-red-600 shadow-md animate-pulse border border-red-900";
+            displayStatus.textContent = "Paused / Standby";
+
+            vinylRecord.classList.remove('vinyl-spinning');
+            toneArm.classList.remove('tone-arm-playing');
+            toneArm.classList.add('tone-arm-rest');
+
+            if (synthLoop) {
+                clearInterval(synthLoop);
+                synthLoop = null;
+            }
+
+            audioElement.pause();
+            stopVinylCrackle();
+            stopVisualizer();
+        }
+
+        function updateSpinSpeed() {
+            vinylRecord.style.animationDuration = currentSpeed === 33 ? '1.8s' : '1.3s';
+        }
+
+        function playNextTrack() {
+            if (tracks.length === 0) return;
+            if (isShuffle && tracks.length > 1) {
+                let nextIdx;
+                do {
+                    nextIdx = Math.floor(Math.random() * tracks.length);
+                } while (nextIdx === currentTrackIndex);
+                currentTrackIndex = nextIdx;
+            } else {
+                currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+            }
+            loadTrack(currentTrackIndex);
+            if (isPlaying) {
+                stopAudio();
+                playAudio();
+            }
+        }
+
+        // Event Listeners
+        playPauseBtn.addEventListener('click', () => {
+            if (!isPoweredOn) return;
+            isPlaying ? stopAudio() : playAudio();
+        });
+
+        shareCurrentBtn.addEventListener('click', () => {
+            if (tracks.length > 0) {
+                shareTrackToWA(tracks[currentTrackIndex]);
+            }
+        });
+
+        powerBtn.addEventListener('click', () => {
+            isPoweredOn = !isPoweredOn;
+            if (!isPoweredOn) {
+                stopAudio();
+                powerBtn.style.opacity = '0.4';
+                displayStatus.textContent = "Powered Off";
+                statusIndicator.className = "w-3.5 h-3.5 shrink-0 rounded-full bg-neutral-700 shadow-md border border-neutral-900";
+            } else {
+                powerBtn.style.opacity = '1';
+                displayStatus.textContent = "System Ready";
+                statusIndicator.className = "w-3.5 h-3.5 shrink-0 rounded-full bg-red-600 shadow-md animate-pulse border border-red-900";
+            }
+        });
+
+        speedBtn.addEventListener('click', () => {
+            currentSpeed = currentSpeed === 33 ? 45 : 33;
+            speedBtn.textContent = `${currentSpeed} RPM`;
+            if (isPlaying) updateSpinSpeed();
+        });
+
+        crackleBtn.addEventListener('click', () => {
+            isCrackleOn = !isCrackleOn;
+            if (isCrackleOn) {
+                crackleBtn.textContent = "ON";
+                crackleBtn.className = "text-[10px] font-bold px-2.5 py-1 rounded-lg bg-emerald-600 text-white border border-emerald-300 shadow-md transition";
+                if (isPlaying) startVinylCrackle();
+            } else {
+                crackleBtn.textContent = "OFF";
+                crackleBtn.className = "text-[10px] font-bold px-2.5 py-1 rounded-lg bg-black/50 text-gray-400 border border-white/15 shadow-inner hover:bg-white/10 transition";
+                stopVinylCrackle();
+            }
+        });
+
+        shuffleBtn.addEventListener('click', () => {
+            isShuffle = !isShuffle;
+            shuffleBtn.classList.toggle('opacity-60', !isShuffle);
+            shuffleBtn.classList.toggle('ring-2', isShuffle);
+            shuffleBtn.classList.toggle('ring-white', isShuffle);
+        });
+
+        repeatBtn.addEventListener('click', () => {
+            isRepeat = !isRepeat;
+            repeatBtn.classList.toggle('opacity-60', !isRepeat);
+            repeatBtn.classList.toggle('ring-2', isRepeat);
+            repeatBtn.classList.toggle('ring-white', isRepeat);
+        });
+
+        nextBtn.addEventListener('click', playNextTrack);
+
+        prevBtn.addEventListener('click', () => {
+            if (tracks.length === 0) return;
+            currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+            loadTrack(currentTrackIndex);
+            if (isPlaying) {
+                stopAudio();
+                playAudio();
+            }
+        });
+
+        volumeSlider.addEventListener('input', (e) => {
+            const vol = parseFloat(e.target.value);
+            audioElement.volume = vol;
+            if (crackleGain) crackleGain.gain.value = vol * 0.35;
+        });
+
+        // Upload MP3 dari HP -> Posisi Paling Atas
+        audioUpload.addEventListener('change', (e) => {
+            try {
+                const files = e.target.files;
+                if (!files || files.length === 0) return;
+
+                const newLocalTracks = Array.from(files).map((file) => ({
+                    title: file.name.replace(/\.[^/.]+$/, ""),
+                    artist: "HP / Local File",
+                    type: "file",
+                    source: "local",
+                    url: URL.createObjectURL(file),
+                    cover: ""
+                }));
+
+                tracks.unshift(...newLocalTracks);
+
+                currentTrackIndex = 0;
+                loadTrack(0);
+                playlistContainer.scrollTop = 0;
+
+                if (isPlaying) {
+                    stopAudio();
+                    playAudio();
+                }
+            } catch (error) {
+                console.error("Error uploading audio files:", error);
+            }
+        });
+
+        // Muat Lagu Suno dari GitHub
+        async function loadTracksFromGitHub() {
+            const branches = ["main", "master"];
+            let lastError = "";
+
+            displayTitle.textContent = "Memuat lagu dari GitHub...";
+            displayStatus.textContent = "Syncing Repository";
+
+            for (const branch of branches) {
+                const baseRawUrl = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${branch}/`;
+                try {
+                    const response = await fetch(`${baseRawUrl}${JSON_PATH}?t=${Date.now()}`);
+                    if (!response.ok) {
+                        lastError = `HTTP ${response.status} (${branch})`;
+                        continue;
+                    }
+
+                    const data = await response.json();
+                    const list = Array.isArray(data) ? data : (data.songs || data.tracks || data.data || []);
+
+                    if (list.length === 0) {
+                        throw new Error("Daftar lagu di songs.json kosong");
+                    }
+
+                    const githubTracks = list.map((item, idx) => {
+                        let rawUrl = item.url || item.audio || item.audio_url || item.src || "";
+                        if (rawUrl && !rawUrl.startsWith("http")) {
+                            rawUrl = baseRawUrl + encodeURI(rawUrl.replace(/^\/+/, ""));
+                        }
+
+                        let rawCover = item.cover || item.cover_url || item.image || item.img || item.thumbnail || "";
+                        if (rawCover && !rawCover.startsWith("http")) {
+                            rawCover = baseRawUrl + encodeURI(rawCover.replace(/^\/+/, ""));
+                        }
+
+                        return {
+                            title: item.title || item.judul || `Track ${idx + 1}`,
+                            artist: item.artist || item.artis || "fatur62",
+                            type: "file",
+                            source: "github",
+                            url: rawUrl,
+                            cover: rawCover
+                        };
+                    }).filter(t => t.url);
+
+                    if (githubTracks.length === 0) {
+                        throw new Error("Format URL audio di songs.json tidak terbaca");
+                    }
+
+                    const existingLocal = tracks.filter(t => t.source === 'local');
+                    tracks = [...existingLocal, ...githubTracks];
+
+                    // Cek apakah halaman dibuka dari link Share WA (?song=...)
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const sharedSong = urlParams.get('song');
+                    let initialIndex = 0;
+
+                    if (sharedSong) {
+                        const foundIndex = tracks.findIndex(
+                            t => (t.title || '').toLowerCase() === sharedSong.toLowerCase()
+                        );
+                        if (foundIndex !== -1) initialIndex = foundIndex;
+                    }
+
+                    currentTrackIndex = initialIndex;
+                    loadTrack(currentTrackIndex);
+                    displayStatus.textContent = `Ready • ${tracks.length} Lagu dimuat`;
+                    return;
+                } catch (error) {
+                    lastError = error.message;
+                }
+            }
+
+            console.error("Gagal memuat dari GitHub:", lastError);
+            displayTitle.textContent = "Gagal Memuat Lagu";
+            displayStatus.textContent = lastError;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            applyTheme(activeTheme);
+            loadTracksFromGitHub();
+        });
+    </script>
+</body>
+</html>
