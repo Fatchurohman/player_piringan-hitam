@@ -9,11 +9,15 @@
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cinzel:wght@600;700&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;700;800&display=swap');
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: radial-gradient(circle at center, #1a1512 0%, #0d0a08 100%);
+            background: radial-gradient(circle at 50% 15%, #231914 0%, #0e0a08 55%, #050403 100%);
+        }
+
+        .font-luxury {
+            font-family: 'Cinzel', serif;
         }
 
         @keyframes spin {
@@ -25,29 +29,58 @@
             animation: spin 1.8s linear infinite;
         }
 
+        /* Bodi Kayu Mahoni Mewah + Tekstur Halus */
         .wooden-base {
-            background: linear-gradient(135deg, #2c160b 0%, #1a0d06 50%, #110804 100%),
-                        url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=1000');
-            background-blend-mode: overlay;
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9), 
-                        inset 0 2px 6px rgba(255, 255, 255, 0.15),
-                        inset 0 -5px 15px rgba(0, 0, 0, 0.8);
-            border: 4px solid #42200c;
+            background:
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(255, 215, 130, 0.015) 0px,
+                    rgba(255, 215, 130, 0.015) 2px,
+                    transparent 2px,
+                    transparent 9px
+                ),
+                radial-gradient(circle at 50% 35%, #3d2112 0%, #241209 55%, #120804 100%);
+            box-shadow:
+                0 35px 70px -15px rgba(0, 0, 0, 0.95),
+                0 0 40px rgba(202, 138, 4, 0.08),
+                inset 0 2px 4px rgba(254, 240, 138, 0.2),
+                inset 0 -8px 20px rgba(0, 0, 0, 0.85);
+            border: 3px solid #5c3317;
+            outline: 1px solid rgba(251, 191, 36, 0.25);
         }
 
+        /* Panel Brushed Gold */
         .gold-panel {
-            background: linear-gradient(135deg, #fef08a 0%, #ca8a04 30%, #eab308 50%, #854d0e 100%);
-            box-shadow: inset 0 1px 3px rgba(255,255,255,0.7), 0 10px 20px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, #fef08a 0%, #eab308 28%, #ca8a04 62%, #a16207 100%);
+            box-shadow:
+                inset 0 1px 2px rgba(255, 255, 255, 0.85),
+                inset 0 -2px 6px rgba(69, 26, 3, 0.45),
+                0 12px 28px rgba(0, 0, 0, 0.65);
         }
 
+        /* Plakat & Panel Kontrol Atas */
         .sync-panel {
             font-family: 'Cinzel', serif;
-            background: linear-gradient(135deg, #451a03 0%, #78350f 50%, #1f1005 100%);
+            background: linear-gradient(145deg, #2b1408 0%, #170a04 100%);
             color: #fde047;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.6), 
-                        inset 0 2px 3px rgba(255, 215, 0, 0.3),
-                        inset 0 -2px 4px rgba(0, 0, 0, 0.8);
-            border: 1.5px solid #d97706;
+            box-shadow:
+                0 8px 18px rgba(0, 0, 0, 0.7),
+                inset 0 1px 2px rgba(254, 240, 138, 0.3),
+                inset 0 -2px 5px rgba(0, 0, 0, 0.9);
+            border: 1px solid rgba(217, 119, 6, 0.55);
+        }
+
+        /* Efek Kilau Piringan Hitam (Diam saat vinyl berputar) */
+        .vinyl-sheen {
+            background: conic-gradient(
+                from 45deg,
+                transparent 0deg,
+                rgba(255, 255, 255, 0.13) 25deg,
+                transparent 55deg,
+                transparent 180deg,
+                rgba(255, 255, 255, 0.1) 205deg,
+                transparent 235deg
+            );
         }
 
         .tone-arm-container {
@@ -63,118 +96,174 @@
             transform: rotate(22deg);
         }
 
-        input[type=range] {
-            accent-color: #ca8a04;
+        /* Custom Slider Volume Mewah */
+        input[type=range].luxury-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(23, 23, 23, 0.85);
+            height: 6px;
+            border-radius: 999px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        input[type=range].luxury-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #fef9c3, #ca8a04);
+            border: 2px solid #1c1917;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+        }
+
+        input[type=range].luxury-slider::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #fef9c3, #ca8a04);
+            border: 2px solid #1c1917;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+        }
+
+        /* Scrollbar Playlist Tipis & Elegan */
+        .custom-scroll::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 999px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #b45309, #eab308);
+            border-radius: 999px;
         }
     </style>
 </head>
 <body class="min-h-screen text-gray-100 flex flex-col items-center justify-between p-4 md:p-8">
 
-    <header class="text-center mb-2">
-        <h1 class="text-3xl md:text-4xl font-extrabold tracking-widest bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-600 bg-clip-text text-transparent drop-shadow-lg font-serif">
+    <header class="text-center mb-3">
+        <h1 class="font-luxury text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-[0.18em] bg-gradient-to-r from-amber-100 via-yellow-400 to-amber-500 bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(234,179,8,0.25)]">
             FATUR LUXURY TURNTABLE
         </h1>
-        <p class="text-[10px] md:text-xs text-amber-500/80 mt-1 uppercase tracking-[0.3em] font-semibold">High-End Analog Masterpiece</p>
+        <div class="flex items-center justify-center gap-2 mt-1.5">
+            <span class="h-[1px] w-8 bg-gradient-to-r from-transparent to-amber-500/70"></span>
+            <p class="text-[9px] md:text-[11px] text-amber-400/80 uppercase tracking-[0.32em] font-semibold">High-End Analog Masterpiece</p>
+            <span class="h-[1px] w-8 bg-gradient-to-l from-transparent to-amber-500/70"></span>
+        </div>
     </header>
 
     <main class="w-full max-w-4xl flex flex-col items-center justify-center space-y-4">
         
         <!-- Playlist & Upload -->
-        <div class="w-full max-w-[660px] bg-[#14100d] border border-amber-900/40 rounded-2xl p-4 shadow-2xl z-30">
+        <div class="w-full max-w-[660px] bg-neutral-950/85 backdrop-blur-md border border-amber-500/25 rounded-2xl p-4 shadow-[0_15px_35px_rgba(0,0,0,0.75)] z-30">
             <div class="flex items-center justify-between mb-3">
-                <h3 class="text-sm font-bold text-amber-200 uppercase tracking-wider flex items-center gap-2 font-serif">
-                    <i class="fa-solid fa-compact-disc text-amber-500"></i> Playlist & Audio Manager
+                <h3 class="font-luxury text-xs sm:text-sm font-bold text-amber-200 uppercase tracking-wider flex items-center gap-2">
+                    <i class="fa-solid fa-compact-disc text-amber-400"></i> Playlist & Audio Manager
                 </h3>
-                <label class="cursor-pointer bg-gradient-to-r from-amber-700 to-yellow-600 hover:from-amber-600 hover:to-yellow-500 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-lg transition flex items-center gap-1.5 border border-amber-400/40">
+                <label class="cursor-pointer bg-gradient-to-r from-amber-700 via-yellow-600 to-amber-700 hover:from-amber-600 hover:to-yellow-500 text-neutral-950 text-xs font-extrabold px-3.5 py-2 rounded-xl shadow-[0_4px_14px_rgba(202,138,4,0.35)] transition active:scale-95 flex items-center gap-1.5 border border-yellow-200/50">
                     <i class="fa-solid fa-folder-open"></i> Buka MP3
                     <input type="file" id="audioUpload" accept="audio/*" multiple class="hidden">
                 </label>
             </div>
 
-            <div id="playlistContainer" class="space-y-2 max-h-36 overflow-y-auto pr-1"></div>
+            <div id="playlistContainer" class="custom-scroll space-y-2 max-h-36 overflow-y-auto pr-1"></div>
         </div>
 
         <!-- Turntable Body -->
-        <div class="wooden-base relative w-full max-w-[660px] min-h-[560px] rounded-3xl p-5 md:p-8 flex flex-col justify-between overflow-hidden">
+        <div class="wooden-base relative w-full max-w-[660px] min-h-[540px] rounded-3xl p-5 md:p-8 flex flex-col justify-between overflow-hidden">
             
-            <div class="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-amber-500/60 rounded-tl-xl pointer-events-none"></div>
-            <div class="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-amber-500/60 rounded-tr-xl pointer-events-none"></div>
-            <div class="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-amber-500/60 rounded-bl-xl pointer-events-none"></div>
-            <div class="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-amber-500/60 rounded-br-xl pointer-events-none"></div>
+            <!-- Ornamen Sudut Kuningan -->
+            <div class="absolute top-3 left-3 w-7 h-7 border-t-2 border-l-2 border-amber-400/60 rounded-tl-xl pointer-events-none"></div>
+            <div class="absolute top-3 right-3 w-7 h-7 border-t-2 border-r-2 border-amber-400/60 rounded-tr-xl pointer-events-none"></div>
+            <div class="absolute bottom-3 left-3 w-7 h-7 border-b-2 border-l-2 border-amber-400/60 rounded-bl-xl pointer-events-none"></div>
+            <div class="absolute bottom-3 right-3 w-7 h-7 border-b-2 border-r-2 border-amber-400/60 rounded-br-xl pointer-events-none"></div>
 
             <!-- Top Controls -->
-            <div class="flex flex-wrap items-center justify-between gap-2 w-full z-30">
-                <div class="sync-panel px-3 py-2 rounded-2xl flex items-center space-x-3">
+            <div class="flex flex-wrap items-center justify-between gap-2.5 w-full z-30">
+                <div class="sync-panel px-3.5 py-2 rounded-2xl flex items-center space-x-3.5">
                     <div class="flex flex-col items-center">
-                        <span class="text-[8px] font-bold text-amber-300/80 uppercase tracking-widest mb-0.5">Power</span>
-                        <button id="powerBtn" class="w-8 h-8 rounded-full bg-gradient-to-tr from-gray-900 to-black border border-amber-400/60 shadow-lg flex items-center justify-center text-xs text-amber-400 hover:scale-105 transition">
+                        <span class="text-[8px] font-bold text-amber-300/80 uppercase tracking-widest mb-1">Power</span>
+                        <button id="powerBtn" class="w-8 h-8 rounded-full bg-gradient-to-tr from-neutral-950 to-neutral-800 border border-amber-400/70 shadow-[0_0_10px_rgba(251,191,36,0.2)] flex items-center justify-center text-xs text-amber-400 hover:scale-105 active:scale-95 transition">
                             <i class="fa-solid fa-power-off"></i>
                         </button>
                     </div>
+                    <div class="h-7 w-[1px] bg-amber-500/20"></div>
                     <div class="flex flex-col items-center">
-                        <span class="text-[8px] font-bold text-amber-300/80 uppercase tracking-widest mb-0.5">Speed</span>
-                        <button id="speedBtn" class="text-[10px] font-bold px-2 py-1 rounded-lg bg-amber-950 text-amber-200 border border-amber-500/50 shadow-inner hover:bg-amber-900 transition">
+                        <span class="text-[8px] font-bold text-amber-300/80 uppercase tracking-widest mb-1">Speed</span>
+                        <button id="speedBtn" class="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-amber-950/90 text-amber-200 border border-amber-500/50 shadow-inner hover:bg-amber-900 active:scale-95 transition">
                             33 RPM
                         </button>
                     </div>
+                    <div class="h-7 w-[1px] bg-amber-500/20"></div>
                     <div class="flex flex-col items-center">
-                        <span class="text-[8px] font-bold text-amber-300/80 uppercase tracking-widest mb-0.5">Vinyl FX</span>
-                        <button id="crackleBtn" title="Efek Kresek-kresek Vinyl" class="text-[10px] font-bold px-2 py-1 rounded-lg bg-neutral-900 text-gray-400 border border-amber-500/30 shadow-inner hover:bg-amber-900 transition">
+                        <span class="text-[8px] font-bold text-amber-300/80 uppercase tracking-widest mb-1">Vinyl FX</span>
+                        <button id="crackleBtn" title="Efek Kresek-kresek Vinyl" class="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-neutral-900 text-gray-400 border border-amber-500/30 shadow-inner hover:bg-amber-900 active:scale-95 transition">
                             OFF
                         </button>
                     </div>
                 </div>
 
-                <div class="sync-panel px-3.5 py-2 rounded-xl text-center flex flex-col items-center justify-center">
-                    <span class="text-[8px] uppercase tracking-[0.2em] text-amber-300/80 font-bold">Created By</span>
-                    <span class="text-xs md:text-sm font-extrabold text-amber-200 tracking-wider">developer : "fatur62"</span>
+                <div class="sync-panel px-4 py-2 rounded-2xl text-center flex flex-col items-center justify-center">
+                    <span class="text-[8px] uppercase tracking-[0.22em] text-amber-300/75 font-bold">Created By</span>
+                    <span class="text-xs md:text-sm font-extrabold text-amber-200 tracking-wider mt-0.5">developer : "fatur62"</span>
                 </div>
             </div>
 
             <!-- Vinyl Platter & Tone Arm -->
-            <div class="relative w-[240px] h-[240px] md:w-[300px] md:h-[300px] mx-auto my-3 flex items-center justify-center z-10">
-                <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-amber-600 via-yellow-200 to-amber-700 shadow-2xl border-4 border-amber-800 flex items-center justify-center">
-                    <div id="vinylRecord" class="relative w-[93%] h-[93%] rounded-full bg-gradient-to-tr from-neutral-950 via-neutral-900 to-neutral-950 shadow-2xl flex items-center justify-center border border-neutral-800">
-                        <div class="absolute inset-3 rounded-full border border-amber-500/10 pointer-events-none"></div>
-                        <div class="absolute inset-6 rounded-full border border-neutral-800/80 pointer-events-none"></div>
-                        <div class="absolute inset-10 rounded-full border border-amber-500/10 pointer-events-none"></div>
-                        <div class="absolute inset-14 rounded-full border border-neutral-800/80 pointer-events-none"></div>
-                        <div class="absolute inset-18 rounded-full border border-amber-500/10 pointer-events-none"></div>
-                        <div class="absolute inset-22 rounded-full border border-neutral-800/80 pointer-events-none"></div>
-                        <div class="absolute inset-26 rounded-full border border-amber-500/10 pointer-events-none"></div>
+            <div class="relative w-[250px] h-[250px] md:w-[305px] md:h-[305px] mx-auto my-4 flex items-center justify-center z-10">
+                <!-- Cincin Luar Platter Emas -->
+                <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-amber-800 via-yellow-200 to-amber-700 shadow-[0_20px_50px_rgba(0,0,0,0.9),0_0_25px_rgba(234,179,8,0.18)] border-[3px] border-amber-950 flex items-center justify-center p-1.5">
+                    
+                    <!-- Piringan Hitam yang Berputar -->
+                    <div id="vinylRecord" class="relative w-full h-full rounded-full bg-gradient-to-tr from-black via-neutral-900 to-neutral-950 shadow-2xl flex items-center justify-center border border-neutral-800">
+                        <!-- Alur Vinyl -->
+                        <div class="absolute inset-2.5 rounded-full border border-amber-400/10 pointer-events-none"></div>
+                        <div class="absolute inset-5 rounded-full border border-neutral-800/90 pointer-events-none"></div>
+                        <div class="absolute inset-8 rounded-full border border-amber-400/10 pointer-events-none"></div>
+                        <div class="absolute inset-11 rounded-full border border-neutral-800/90 pointer-events-none"></div>
+                        <div class="absolute inset-14 rounded-full border border-amber-400/10 pointer-events-none"></div>
+                        <div class="absolute inset-[68px] rounded-full border border-neutral-800/90 pointer-events-none"></div>
 
-                        <div id="recordLabel" class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-tr from-amber-600 via-yellow-500 to-amber-700 border-4 border-amber-900 shadow-inner flex flex-col items-center justify-center text-center p-2 relative overflow-hidden pointer-events-none">
+                        <!-- Label Tengah -->
+                        <div id="recordLabel" class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-tr from-amber-700 via-yellow-500 to-amber-800 border-4 border-amber-950 shadow-[inset_0_0_12px_rgba(0,0,0,0.6)] flex flex-col items-center justify-center text-center p-2 relative overflow-hidden pointer-events-none">
                             <div id="labelOverlay" class="absolute inset-0 bg-black/15"></div>
                             <span id="labelArtist" class="text-[8px] md:text-[9px] font-bold text-amber-100 uppercase tracking-widest z-10 truncate w-full">Luxury Audio</span>
                             <span id="labelTitle" class="text-[10px] md:text-[11px] font-extrabold text-white tracking-wide z-10 truncate w-full mt-0.5">Gold Masterpiece</span>
-                            <div class="w-3.5 h-3.5 rounded-full bg-neutral-300 border-2 border-neutral-600 z-10 mt-1 shadow-inner"></div>
+                            <div class="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-amber-100 to-neutral-500 border-2 border-neutral-800 z-10 mt-1 shadow-inner"></div>
                         </div>
                     </div>
+
+                    <!-- Pantulan Cahaya Statis di Atas Vinyl -->
+                    <div class="vinyl-sheen absolute inset-2 rounded-full pointer-events-none"></div>
                 </div>
 
+                <!-- Tone Arm -->
                 <div id="toneArm" class="tone-arm-container tone-arm-rest absolute -top-4 -right-4 w-40 h-56 pointer-events-none z-20">
-                    <svg viewBox="0 0 250 250" class="w-full h-full drop-shadow-2xl">
-                        <circle cx="215" cy="45" r="24" fill="url(#goldGrad)" stroke="#78350f" stroke-width="2.5"/>
-                        <circle cx="215" cy="45" r="16" fill="#1c1917"/>
+                    <svg viewBox="0 0 250 250" class="w-full h-full drop-shadow-[0_12px_16px_rgba(0,0,0,0.85)]">
+                        <circle cx="215" cy="45" r="24" fill="url(#goldGrad)" stroke="#451a03" stroke-width="2.5"/>
+                        <circle cx="215" cy="45" r="16" fill="#171412"/>
                         <circle cx="215" cy="45" r="6" fill="url(#goldGrad)"/>
                         
-                        <rect x="195" y="30" width="8" height="15" rx="3" fill="#111" stroke="#d97706" stroke-width="0.5"/>
+                        <rect x="195" y="30" width="8" height="15" rx="3" fill="#111" stroke="#d97706" stroke-width="0.6"/>
                         <line x1="205" y1="55" x2="198" y2="65" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
 
                         <rect x="210" y="10" width="12" height="22" rx="4" fill="#0c0a09" stroke="#d97706" stroke-width="1.5"/>
                         <circle cx="216" cy="15" r="5" fill="#d97706"/>
 
-                        <path d="M 215 45 L 215 85 Q 215 130 140 160 L 95 175" fill="none" stroke="url(#goldGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M 215 45 L 215 85 Q 215 130 140 160 L 95 175" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-1, -1)"/>
+                        <path d="M 215 45 L 215 85 Q 215 130 140 160 L 95 175" fill="none" stroke="url(#goldGrad)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 215 45 L 215 85 Q 215 130 140 160 L 95 175" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(-1, -1)"/>
 
                         <g transform="translate(90, 168) rotate(15)">
-                            <rect x="0" y="0" width="16" height="24" rx="3" fill="#1c1917" stroke="#fde047" stroke-width="1.2"/>
+                            <rect x="0" y="0" width="16" height="24" rx="3" fill="#171412" stroke="#fde047" stroke-width="1.2"/>
                             <rect x="3" y="18" width="10" height="8" fill="#ca8a04" />
                         </g>
 
                         <defs>
                             <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#fef08a" />
+                                <stop offset="0%" stop-color="#fef9c3" />
                                 <stop offset="50%" stop-color="#ca8a04" />
                                 <stop offset="100%" stop-color="#78350f" />
                             </linearGradient>
@@ -184,79 +273,55 @@
             </div>
 
             <!-- Gold Spectrum Visualizer -->
-            <div class="w-full h-10 mb-2.5 bg-black/60 border border-amber-600/40 rounded-xl px-2 py-1 shadow-inner z-30 flex items-center justify-center overflow-hidden">
+            <div class="w-full h-11 mb-3 bg-black/75 border border-amber-500/35 rounded-xl px-2.5 py-1.5 shadow-[inset_0_2px_10px_rgba(0,0,0,0.9)] z-30 flex items-center justify-center overflow-hidden">
                 <canvas id="visualizerCanvas" class="w-full h-full"></canvas>
             </div>
 
-                        <!-- Gold Control Panel -->
-            <div class="gold-panel w-full py-3 px-4 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-3 z-30 border border-yellow-200/60 shadow-xl">
-                <!-- Baris Judul & Status (Full width di HP agar tidak kepotong) -->
+            <!-- Gold Control Panel (Tunggal, Bersih & Responsif) -->
+            <div class="gold-panel w-full py-3.5 px-4 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-3.5 z-30 border border-yellow-100/60">
+                <!-- Baris Judul & Status -->
                 <div class="flex items-center space-x-2.5 w-full md:w-auto md:flex-1 min-w-0">
                     <div id="statusIndicator" class="w-3.5 h-3.5 shrink-0 rounded-full bg-red-600 shadow-md animate-pulse border border-red-900"></div>
                     <div class="min-w-0 flex-1">
-                        <h4 id="displayTitle" class="text-xs font-black text-neutral-900 tracking-wide truncate">Menghubungkan GitHub...</h4>
-                        <p id="displayStatus" class="text-[10px] text-neutral-800 font-bold truncate">System Standby</p>
+                        <h4 id="displayTitle" class="text-xs font-extrabold text-neutral-950 tracking-wide truncate">Menghubungkan GitHub...</h4>
+                        <p id="displayStatus" class="text-[10px] text-amber-950/90 font-bold truncate">System Standby</p>
                     </div>
                 </div>
 
                 <!-- Baris Tombol Kontrol -->
-                <div class="flex items-center justify-center space-x-2">
-                    <button id="shuffleBtn" title="Shuffle (Acak)" class="w-8 h-8 rounded-full bg-neutral-900/80 hover:bg-neutral-800 text-amber-300/50 border border-amber-500/40 shadow flex items-center justify-center transition active:scale-95">
+                <div class="flex items-center justify-center space-x-2.5">
+                    <button id="shuffleBtn" title="Shuffle (Acak)" class="w-8 h-8 rounded-full bg-neutral-950/90 hover:bg-neutral-800 text-amber-300/50 border border-amber-400/50 shadow-md flex items-center justify-center transition active:scale-95">
                         <i class="fa-solid fa-shuffle text-[11px]"></i>
                     </button>
-                    <button id="prevBtn" title="Previous Track" class="w-9 h-9 rounded-full bg-neutral-900 hover:bg-neutral-800 text-amber-300 border border-amber-500/60 shadow-md flex items-center justify-center transition active:scale-95">
+                    <button id="prevBtn" title="Previous Track" class="w-9 h-9 rounded-full bg-neutral-950 hover:bg-neutral-800 text-amber-300 border border-amber-400/70 shadow-lg flex items-center justify-center transition active:scale-95">
                         <i class="fa-solid fa-backward-step text-xs"></i>
                     </button>
-                    <button id="playPauseBtn" title="Play / Pause" class="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-800 via-amber-600 to-yellow-500 hover:from-amber-700 hover:to-yellow-400 text-white shadow-xl flex items-center justify-center text-sm transition active:scale-95 border-2 border-amber-200">
+                    <button id="playPauseBtn" title="Play / Pause" class="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-900 via-amber-600 to-yellow-400 hover:from-amber-800 hover:to-yellow-300 text-white shadow-[0_6px_16px_rgba(0,0,0,0.55)] flex items-center justify-center text-base transition active:scale-95 border-2 border-yellow-100">
                         <i id="playIcon" class="fa-solid fa-play ml-0.5"></i>
                     </button>
-                    <button id="nextBtn" title="Next Track" class="w-9 h-9 rounded-full bg-neutral-900 hover:bg-neutral-800 text-amber-300 border border-amber-500/60 shadow-md flex items-center justify-center transition active:scale-95">
+                    <button id="nextBtn" title="Next Track" class="w-9 h-9 rounded-full bg-neutral-950 hover:bg-neutral-800 text-amber-300 border border-amber-400/70 shadow-lg flex items-center justify-center transition active:scale-95">
                         <i class="fa-solid fa-forward-step text-xs"></i>
                     </button>
-                    <button id="repeatBtn" title="Repeat 1 Lagu" class="w-8 h-8 rounded-full bg-neutral-900/80 hover:bg-neutral-800 text-amber-300/50 border border-amber-500/40 shadow flex items-center justify-center transition active:scale-95">
+                    <button id="repeatBtn" title="Repeat 1 Lagu" class="w-8 h-8 rounded-full bg-neutral-950/90 hover:bg-neutral-800 text-amber-300/50 border border-amber-400/50 shadow-md flex items-center justify-center transition active:scale-95">
                         <i class="fa-solid fa-repeat text-[11px]"></i>
                     </button>
                 </div>
 
                 <!-- Baris Volume -->
-                <div class="flex items-center justify-center space-x-2 w-full md:w-auto">
-                    <i class="fa-solid fa-volume-high text-xs text-neutral-900"></i>
-                    <input id="volumeSlider" type="range" min="0" max="1" step="0.05" value="0.7" class="w-32 md:w-20 h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer">
+                <div class="flex items-center justify-center space-x-2 w-full md:w-auto pt-0.5 md:pt-0">
+                    <i class="fa-solid fa-volume-high text-xs text-neutral-950"></i>
+                    <input id="volumeSlider" type="range" min="0" max="1" step="0.05" value="0.7" class="luxury-slider w-36 md:w-20 cursor-pointer">
                 </div>
             </div>
 
-
-                <div class="flex items-center space-x-1.5">
-                    <button id="shuffleBtn" title="Shuffle (Acak)" class="w-8 h-8 rounded-full bg-neutral-900/80 hover:bg-neutral-800 text-amber-300/50 border border-amber-500/40 shadow flex items-center justify-center transition active:scale-95">
-                        <i class="fa-solid fa-shuffle text-[11px]"></i>
-                    </button>
-                    <button id="prevBtn" title="Previous Track" class="w-9 h-9 rounded-full bg-neutral-900 hover:bg-neutral-800 text-amber-300 border border-amber-500/60 shadow-md flex items-center justify-center transition active:scale-95">
-                        <i class="fa-solid fa-backward-step text-xs"></i>
-                    </button>
-                    <button id="playPauseBtn" title="Play / Pause" class="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-800 via-amber-600 to-yellow-500 hover:from-amber-700 hover:to-yellow-400 text-white shadow-xl flex items-center justify-center text-sm transition active:scale-95 border-2 border-amber-200">
-                        <i id="playIcon" class="fa-solid fa-play ml-0.5"></i>
-                    </button>
-                    <button id="nextBtn" title="Next Track" class="w-9 h-9 rounded-full bg-neutral-900 hover:bg-neutral-800 text-amber-300 border border-amber-500/60 shadow-md flex items-center justify-center transition active:scale-95">
-                        <i class="fa-solid fa-forward-step text-xs"></i>
-                    </button>
-                    <button id="repeatBtn" title="Repeat 1 Lagu" class="w-8 h-8 rounded-full bg-neutral-900/80 hover:bg-neutral-800 text-amber-300/50 border border-amber-500/40 shadow flex items-center justify-center transition active:scale-95">
-                        <i class="fa-solid fa-repeat text-[11px]"></i>
-                    </button>
-                </div>
-
-                <div class="flex items-center space-x-2">
-                    <i class="fa-solid fa-volume-high text-xs text-neutral-900"></i>
-                    <input id="volumeSlider" type="range" min="0" max="1" step="0.05" value="0.7" class="w-16 md:w-20 h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer">
-                </div>
-            </div>
         </div>
     </main>
 
-    <footer class="mt-4 text-center text-xs text-amber-500/60 font-medium">
+    <footer class="mt-5 text-center text-[11px] text-amber-500/60 font-medium tracking-wider">
         <p>Luxury Analog Turntable • Designed & Engineered by fatur62</p>
     </footer>
 
-    <!-- JavaScript Application Logic -->
+    <!-- JavaScript Application Logic (100% Fungsi Tetap Utuh) -->
     <script>
         // Konfigurasi Repo GitHub
         const GITHUB_USER = "Fatchurohman";
@@ -337,10 +402,10 @@
                     const badgeText = isLocal ? 'HP / LOCAL' : (track.type === 'file' ? 'SUNO' : 'SYNTH');
                     const badgeClass = isLocal
                         ? 'bg-amber-600/30 text-amber-200 border-amber-400/50'
-                        : 'bg-neutral-800 text-amber-300/80 border-amber-500/20';
+                        : 'bg-neutral-900 text-amber-300/80 border-amber-500/25';
 
                     const item = document.createElement('div');
-                    item.className = `flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition border ${index === currentTrackIndex ? 'bg-amber-950/60 border-amber-500/80 text-amber-200 shadow-md' : 'bg-neutral-900/60 border-neutral-800 text-gray-300 hover:bg-neutral-800'}`;
+                    item.className = `flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition border ${index === currentTrackIndex ? 'bg-gradient-to-r from-amber-950/80 to-neutral-900 border-amber-500/70 text-amber-200 shadow-md' : 'bg-neutral-900/50 border-neutral-800/80 text-gray-300 hover:bg-neutral-800/80'}`;
                     item.innerHTML = `
                         <div class="flex items-center space-x-3 overflow-hidden">
                             <span class="w-6 text-center text-xs text-amber-400 font-bold">${index + 1}</span>
@@ -376,7 +441,6 @@
                 labelArtist.textContent = track.artist || 'fatur62 Audio';
                 displayTitle.textContent = `${track.title || 'Untitled'} — ${track.artist || 'Custom Audio'}`;
 
-                // Tampilkan cover bersih di tengah piringan jika tersedia
                 if (track.cover) {
                     recordLabel.style.backgroundImage = `url('${track.cover}')`;
                     recordLabel.style.backgroundSize = 'cover';
@@ -437,7 +501,6 @@
             const data = buffer.getChannelData(0);
 
             for (let i = 0; i < bufferSize; i++) {
-                // Hiss lembut + letupan acak khas piringan hitam
                 let sample = (Math.random() * 2 - 1) * 0.015;
                 if (Math.random() < 0.0007) {
                     sample += (Math.random() * 2 - 1) * 0.45;
@@ -643,11 +706,11 @@
             isCrackleOn = !isCrackleOn;
             if (isCrackleOn) {
                 crackleBtn.textContent = "ON";
-                crackleBtn.className = "text-[10px] font-bold px-2 py-1 rounded-lg bg-amber-600 text-white border border-amber-300 shadow-md transition";
+                crackleBtn.className = "text-[10px] font-bold px-2.5 py-1 rounded-lg bg-amber-600 text-white border border-amber-300 shadow-md transition";
                 if (isPlaying) startVinylCrackle();
             } else {
                 crackleBtn.textContent = "OFF";
-                crackleBtn.className = "text-[10px] font-bold px-2 py-1 rounded-lg bg-neutral-900 text-gray-400 border border-amber-500/30 shadow-inner hover:bg-amber-900 transition";
+                crackleBtn.className = "text-[10px] font-bold px-2.5 py-1 rounded-lg bg-neutral-900 text-gray-400 border border-amber-500/30 shadow-inner hover:bg-amber-900 transition";
                 stopVinylCrackle();
             }
         });
@@ -701,7 +764,6 @@
                     cover: ""
                 }));
 
-                // Masukkan ke paling atas playlist
                 tracks.unshift(...newLocalTracks);
 
                 currentTrackIndex = 0;
@@ -766,7 +828,6 @@
                         throw new Error("Format URL audio di songs.json tidak terbaca");
                     }
 
-                    // Pertahankan lagu lokal di paling atas jika user keburu upload duluan
                     const existingLocal = tracks.filter(t => t.source === 'local');
                     tracks = [...existingLocal, ...githubTracks];
 
